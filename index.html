@@ -213,7 +213,7 @@
             cursor: pointer;
         }
 
-        /* Profile Pic - UPDATED TO MATCH BRUTALIST BOXES */
+        /* Profile Pic */
         .profile-pic {
             width: 100%;
             aspect-ratio: 2 / 3;
@@ -829,6 +829,127 @@
             display: none;
         }
 
+        /* --- COFFEE BREAK EASTER EGG CSS --- */
+        .coffee-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .coffee-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .coffee-modal {
+            text-align: center;
+            position: relative;
+            padding: 3rem;
+        }
+
+        .close-coffee {
+            position: absolute;
+            top: -20px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #b0b3b5;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-coffee:hover {
+            color: var(--accent-red);
+        }
+
+        .coffee-text {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-style: italic;
+            letter-spacing: 0.05rem;
+            margin-top: 2rem;
+            animation: pulseText 3s infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* CSS Coffee Cup Animation */
+        .cup-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .cup {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 60px;
+        }
+
+        .cup-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: 4px solid var(--accent-red);
+            border-top: none;
+            z-index: 2;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+        }
+
+        .cup-handle {
+            position: absolute;
+            right: -18px;
+            top: 10px;
+            width: 30px;
+            height: 35px;
+            border: 4px solid var(--accent-red);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Steaming Animation */
+        .steam {
+            position: absolute;
+            bottom: 70px;
+            width: 6px;
+            background-color: rgba(240, 240, 240, 0.4);
+            border-radius: 10px;
+            animation: rise 2s infinite ease-in;
+            filter: blur(2px);
+        }
+
+        .steam-1 { left: 35px; height: 30px; animation-duration: 2.5s; animation-delay: 0.2s; }
+        .steam-2 { left: 50px; height: 40px; animation-duration: 2s; animation-delay: 0.6s; }
+        .steam-3 { left: 65px; height: 25px; animation-duration: 2.8s; animation-delay: 0s; }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scaleX(1); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-40px) scaleX(2); opacity: 0; }
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1rem; }
@@ -1290,13 +1411,6 @@
                         <a href="tel:+60198526182" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> +60198526182</a>
                     </div>
                 </div>
-                <div class="referee">
-                    <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Regional Director (East Malaysia), Syed Kechik Group</div>
-                    <div class="contact-links">
-                        <a href="tel:+60198526182" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> +60168881026</a>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -1310,6 +1424,10 @@
             <button class="back-to-top" id="backToTopBtn">
                 <i class="fa-solid fa-arrow-up"></i> Back To Top
             </button>
+            <!-- NEW COFFEE BREAK BUTTON ADDED HERE -->
+            <button class="back-to-top" id="coffeeBtn" title="Take a break">
+                <i class="fa-solid fa-mug-hot"></i> Break
+            </button>
         </div>
         <div class="footer-credit">
             &copy; 2026 Razie Alfiedan. Designed & Built by Razie Alfiedan.
@@ -1320,6 +1438,28 @@
         <h3>View My Full Interactive Portfolio</h3>
         <p>Scan the QR code or visit: <strong>https://raziealfiedan.github.io/</strong></p>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://raziealfiedan.github.io/" alt="QR Code to Interactive Portfolio">
+    </div>
+
+    <!-- NEW COFFEE OVERLAY MODAL ADDED HERE -->
+    <div id="coffeeOverlay" class="coffee-overlay">
+        <div class="coffee-modal">
+            <button id="closeCoffeeBtn" class="close-coffee" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="cup-container">
+                <div class="steam steam-1"></div>
+                <div class="steam steam-2"></div>
+                <div class="steam steam-3"></div>
+                <div class="cup">
+                    <div class="cup-body"></div>
+                    <div class="cup-handle"></div>
+                </div>
+            </div>
+            <p class="coffee-text">Time for a screen break. Go grab a cup of coffee!<br><span style="font-size: 0.8rem; font-style: normal; opacity: 0.7;">Take a breath. Enjoy the lo-fi.</span></p>
+            <audio id="lofiAudio" loop>
+                <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+            </audio>
+        </div>
     </div>
 
     <script>
@@ -1586,6 +1726,46 @@
         
         // Initialize quote on load
         window.addEventListener('DOMContentLoaded', updateQuote);
+
+        // --- NEW: COFFEE BREAK EASTER EGG LOGIC ---
+        const coffeeBtn = document.getElementById('coffeeBtn');
+        const coffeeOverlay = document.getElementById('coffeeOverlay');
+        const closeCoffeeBtn = document.getElementById('closeCoffeeBtn');
+        const lofiAudio = document.getElementById('lofiAudio');
+
+        if (coffeeBtn && coffeeOverlay && closeCoffeeBtn && lofiAudio) {
+            coffeeBtn.addEventListener('click', () => {
+                coffeeOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+                lofiAudio.volume = 0; 
+                lofiAudio.play();
+                
+                // Smooth audio fade in
+                let fadeAudioIn = setInterval(() => {
+                    if (lofiAudio.volume < 0.5) {
+                        lofiAudio.volume += 0.05;
+                    } else {
+                        clearInterval(fadeAudioIn);
+                    }
+                }, 100);
+            });
+
+            closeCoffeeBtn.addEventListener('click', () => {
+                coffeeOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+                
+                // Smooth audio fade out
+                let fadeAudioOut = setInterval(() => {
+                    if (lofiAudio.volume > 0.05) {
+                        lofiAudio.volume -= 0.05;
+                    } else {
+                        clearInterval(fadeAudioOut);
+                        lofiAudio.pause();
+                        lofiAudio.currentTime = 0;
+                    }
+                }, 50);
+            });
+        }
 
     </script>
 </body>
