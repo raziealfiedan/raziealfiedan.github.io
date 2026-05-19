@@ -866,13 +866,6 @@
             transform: translate(2px, 2px);
         }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
         .form-group {
             display: flex;
             flex-direction: column;
@@ -935,10 +928,85 @@
             border-color: var(--accent-red);
         }
 
-        /* Adjust form grid for mobile */
+        /* --- COMPREHENSIVE MOBILE LAYOUT FIX --- */
         @media (max-width: 900px) {
+            /* 1. Main Layout: Stack sidebar on top of main content */
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 2px solid var(--text-main);
+                padding-right: 0;
+                padding-bottom: 2rem;
+                text-align: center; /* Centers profile photo and info */
+            }
+            
+            .sidebar h3 {
+                justify-content: center;
+            }
+
+            .sidebar p, .sidebar li, .contact-links a {
+                justify-content: center;
+            }
+
+            /* 2. Fix Inner Grids: Force everything to 1 column */
+            .principles-grid, 
+            .video-grid, 
+            .referee-grid, 
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* 3. Typography Adjustments */
+            h1 { font-size: 2.2rem; }
+            .section-header { font-size: 1.3rem; }
+
+            /* 4. Mobile Navigation Menu Logic */
+            .mobile-menu-btn {
+                display: flex; /* Show hamburger button */
+            }
+
+            .header-nav {
+                display: none; /* Hide desktop nav by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                border-bottom: 2px solid var(--text-main);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Toggled via your existing JavaScript */
+            .header-nav.active {
+                display: flex; 
+            }
+
+            .header-nav a {
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .header-nav a::after {
+                display: none; /* Removes the bottom underline effect for mobile stack */
+            }
+
+            /* 5. Adjust Slider Heights for smaller screens */
+            .slider-container img {
+                height: 400px;
+                padding: 0;
+            }
+            
+            .photo-break-container {
+                height: 250px;
             }
         }
 
@@ -1521,9 +1589,6 @@
 
             <div class="video-grid fade-in-up">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/89hLNFWY36I?si=hJ60dMcC8Fr0TRbd" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/gjH6wnZIplE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
@@ -1886,7 +1951,7 @@
             { text: "Be in this world as if you were a stranger or a traveler.", author: "Prophet Muhammad" },
             { text: "Look at those who are beneath you and do not look at those who are above you, for it is more suitable that you should not despise the blessings of God.", author: "Prophet Muhammad" },
             { text: "What has reached you was never meant to miss you, and what has missed you was never meant to reach you.", author: "Prophet Muhammad" },
-            { text: "The most beloved of deeds to God are those that are most consistent, even if they are small.", author: "Prophet Muhammad" },
+            { text: "The most beloved of deeds to God are God's that are most consistent, even if they are small.", author: "Prophet Muhammad" },
             { text: "None of you truly believes until he loves for his brother what he loves for himself.", author: "Prophet Muhammad" },
             { text: "Make things easy for people and do not make them difficult, and cheer people up and do not drive them away.", author: "Prophet Muhammad" },
             { text: "Trust in God, but tie your camel.", author: "Prophet Muhammad" },
