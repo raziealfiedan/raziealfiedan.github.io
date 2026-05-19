@@ -942,15 +942,24 @@
                 border-bottom: 2px solid var(--text-main);
                 padding-right: 0;
                 padding-bottom: 2rem;
-                text-align: center; /* Centers profile photo and info */
-            }
-            
-            .sidebar h3 {
-                justify-content: center;
+                text-align: center; /* Centers profile photo, H1, and Job Title */
             }
 
-            .sidebar p, .sidebar li, .contact-links a {
-                justify-content: center;
+            /* Centers the Psychometric Tags properly */
+            .psychometric-tags {
+                justify-content: center; 
+            }
+
+            /* Force left alignment on sections that should not be centered */
+            .contact-info, 
+            .skills-section,
+            .quote-container {
+                text-align: left;
+            }
+
+            /* Ensure flex items in sidebar go left instead of inheriting a center alignment */
+            .contact-links {
+                align-items: flex-start;
             }
 
             /* 2. Fix Inner Grids: Force everything to 1 column */
@@ -960,6 +969,7 @@
             .form-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                text-align: left; /* Make sure reference grid stays left-aligned */
             }
 
             /* 3. Typography Adjustments */
@@ -972,7 +982,6 @@
             }
 
             .header-nav {
-                display: none; /* Hide desktop nav by default */
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -982,11 +991,20 @@
                 padding: 1rem 0;
                 border-bottom: 2px solid var(--text-main);
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                
+                /* Smooth Dropdown Magic */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+                z-index: -1;
             }
 
             /* Toggled via your existing JavaScript */
             .header-nav.active {
-                display: flex; 
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0); 
             }
 
             .header-nav a {
@@ -1057,6 +1075,25 @@
             border-color: var(--text-main);
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0 var(--text-main);
+        }
+
+        /* Download Button Specifics */
+        #downloadPdfBtn {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            animation: brutalistPulse 2.5s infinite;
+        }
+        
+        #downloadPdfBtn:hover {
+            animation: none; /* Stop pulsing when hovered */
+            background-color: var(--text-main); /* Flips to black/white on hover */
+            color: var(--bg-color);
+        }
+
+        @keyframes brutalistPulse {
+            0% { box-shadow: 4px 4px 0 var(--text-main); transform: translate(0px, 0px); }
+            50% { box-shadow: 6px 6px 0 var(--accent-red); transform: translate(-2px, -2px); }
+            100% { box-shadow: 4px 4px 0 var(--text-main); transform: translate(0px, 0px); }
         }
 
         body.dark-mode .back-to-top {
