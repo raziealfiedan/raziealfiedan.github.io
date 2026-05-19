@@ -404,17 +404,16 @@
             transform: translateX(0);
         }
 
-        /* Psychometric Tags & Tooltips */
+        /* Psychometric Tags & Fixed Explanation Area (No Box) */
         .psychometric-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
             margin-top: -2rem; 
-            margin-bottom: 3rem; 
+            margin-bottom: 0.5rem; 
         }
 
         .psychometric-tags span {
-            position: relative; /* Required for the tooltip */
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -423,75 +422,32 @@
             border: 1px solid var(--secondary-border);
             color: var(--text-platinum);
             transition: all 0.3s ease;
-            cursor: help; /* Changes cursor to a question mark on hover */
+            cursor: pointer; 
         }
 
-        .psychometric-tags span:hover {
+        .psychometric-tags span:hover, .psychometric-tags span.active-tag {
             border-color: var(--accent-red);
             color: var(--accent-red);
             transform: translateY(-2px);
             box-shadow: 2px 2px 0 var(--text-main);
         }
 
-        /* Tooltip Box */
-        .psychometric-tags span::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 130%; 
-            left: -5px; /* Anchors the box to the left edge instead of center */
-            transform: translateY(10px); /* Removed the centering translation */
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            padding: 0.6rem 0.8rem;
-            width: max-content;
-            max-width: 240px; 
-            font-size: 0.75rem;
+        /* Invisible text area that only shows when active */
+        .tag-explanation {
+            font-size: 0.85rem;
             font-weight: 500;
-            text-transform: none;
-            letter-spacing: normal;
+            color: var(--text-main);
+            min-height: 80px; /* Reserves space so layout doesn't jump */
+            margin-bottom: 2rem;
+            text-align: left; 
             line-height: 1.4;
-            text-align: left; /* Left-aligning text fits the brutalist theme better */
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 100;
-            box-shadow: 4px 4px 0 var(--accent-red);
-            border: 1px solid var(--secondary-border);
-        }
-
-        /* Tooltip Pointer Triangle */
-        .psychometric-tags span::before {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 15px; /* Moves the triangle to point at the left side of the button */
-            transform: translateY(10px);
-            border-width: 6px;
-            border-style: solid;
-            border-color: var(--text-main) transparent transparent transparent;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 100;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
-        /* Show Tooltip on Hover or Mobile Tap (Focus) */
-        .psychometric-tags span:hover::after,
-        .psychometric-tags span:hover::before,
-        .psychometric-tags span:focus::after,
-        .psychometric-tags span:focus::before {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0); /* Removed the centering translation here too */
-        }
-
-        /* Keep the button highlighted when tapped on mobile */
-        .psychometric-tags span:focus {
-            outline: none;
-            border-color: var(--accent-red);
-            color: var(--accent-red);
+        .tag-explanation.active {
+            opacity: 1; /* Fades in the text */
         }
 
         .contact-info, .skills-section, .quote-container { margin-bottom: 3rem; }
@@ -548,7 +504,6 @@
 
         .summary { font-size: 1.1rem; margin-bottom: 3rem; }
 
-        /* --- UPDATED: Photo Break Auto-Slider Styles --- */
         .photo-break-container {
             width: 100%;
             height: 400px; 
@@ -593,7 +548,6 @@
             filter: grayscale(0%);
         }
 
-        /* Hide buttons by default, show on hover */
         .photo-break-container .slider-btn {
             opacity: 0;
             background: rgba(0, 0, 0, 0.7);
@@ -682,17 +636,13 @@
 
         ul.job-details { 
             padding-left: 1.2rem; 
-            border-left: 2px solid transparent;
+            border-left: 2px solid var(--accent-red); 
             transition: border-color 0.3s ease;
         }
         
         ul.job-details li { 
             margin-bottom: 0.5rem; 
             font-size: 1rem; 
-        }
-
-        .job:hover ul.job-details {
-            border-left-color: var(--accent-red);
         }
 
         /* Image Slider */
@@ -844,6 +794,24 @@
             border: 0;
         }
 
+        /* LATEST BADGE FOR VIDEO */
+        .latest-video::after {
+            content: "LATEST";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.1rem;
+            border: 2px solid var(--text-main);
+            box-shadow: 2px 2px 0 var(--text-main);
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .referee-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -930,7 +898,6 @@
 
         /* --- COMPREHENSIVE MOBILE LAYOUT FIX --- */
         @media (max-width: 900px) {
-            /* 1. Main Layout: Stack sidebar on top of main content */
             .container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -942,57 +909,58 @@
                 border-bottom: 2px solid var(--text-main);
                 padding-right: 0;
                 padding-bottom: 2rem;
-                text-align: center; /* Centers profile photo, H1, and Job Title */
+                text-align: center; 
             }
 
-            /* Centers the Psychometric Tags properly */
             .psychometric-tags {
                 justify-content: center; 
             }
 
-            /* Force left alignment on sections that should not be centered */
+            .tag-explanation {
+                text-align: center;
+                margin: 0 auto 2rem auto;
+                width: 100%;
+            }
+
             .contact-info, 
             .skills-section,
             .quote-container {
                 text-align: left;
             }
 
-            /* Ensure flex items in sidebar go left instead of inheriting a center alignment */
             .contact-links {
                 align-items: flex-start;
             }
 
-            /* 2. Fix Inner Grids: Force everything to 1 column */
             .principles-grid, 
             .video-grid, 
             .referee-grid, 
             .form-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-                text-align: left; /* Make sure reference grid stays left-aligned */
+                text-align: left; 
             }
 
-            /* 3. Typography Adjustments */
             h1 { font-size: 2.2rem; }
             .section-header { font-size: 1.3rem; }
 
-            /* 4. Mobile Navigation Menu Logic */
             .mobile-menu-btn {
-                display: flex; /* Show hamburger button */
+                display: flex; 
             }
 
+            /* 5x2 GRID FOR MOBILE DROPDOWN NAV */
             .header-nav {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
                 background-color: var(--bg-color);
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
                 padding: 1rem 0;
                 border-bottom: 2px solid var(--text-main);
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
                 
-                /* Smooth Dropdown Magic */
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-20px);
@@ -1000,7 +968,6 @@
                 z-index: -1;
             }
 
-            /* Toggled via your existing JavaScript */
             .header-nav.active {
                 opacity: 1;
                 visibility: visible;
@@ -1008,16 +975,16 @@
             }
 
             .header-nav a {
-                padding: 1rem 2rem;
+                padding: 1rem;
                 width: 100%;
                 text-align: center;
+                font-size: 0.7rem; 
             }
 
             .header-nav a::after {
-                display: none; /* Removes the bottom underline effect for mobile stack */
+                display: none; 
             }
 
-            /* 5. Adjust Slider Heights for smaller screens */
             .slider-container img {
                 height: 400px;
                 padding: 0;
@@ -1085,8 +1052,8 @@
         }
         
         #downloadPdfBtn:hover {
-            animation: none; /* Stop pulsing when hovered */
-            background-color: var(--text-main); /* Flips to black/white on hover */
+            animation: none; 
+            background-color: var(--text-main); 
             color: var(--bg-color);
         }
 
@@ -1117,7 +1084,6 @@
         }
 
         @media print {
-            /* Now hiding the entire hire-me-section instead of just the form box */
             .main-header, #portfolio-section, #productions, .video-grid, .site-footer, .interaction-indicator, .speech-bubble, .scroll-progress-container, .quote-container, .photo-break-container, #hire-me-section { display: none !important; }
             html { scroll-padding-top: 0; }
             
@@ -1342,7 +1308,6 @@
             <h1>Razie Alfiedan</h1>
             <span class="job-title">Marketing, Communications & Visual Art</span>
 
-            <!-- NEW ADDITION: Psychometric Tags with Context Tooltips -->
             <div class="psychometric-tags fade-in-up">
                 <span tabindex="0" data-tooltip="MBTI: The Advocate. Highly intuitive, empathetic, and future-focused. Driven by a strong sense of integrity and quiet vision.">INFJ-T</span>
                 
@@ -1350,6 +1315,9 @@
                 
                 <span tabindex="0" data-tooltip="CliftonStrengths: Naturally spots relevant patterns/issues, and possesses a strong inner drive to work hard and get things done.">Strategic & Achiever</span>
             </div>
+            
+            <!-- Completely invisible text area that fades in on interaction -->
+            <div id="tag-explanation-box" class="tag-explanation fade-in-up"></div>
 
             <div class="contact-info">
                 <h3><i class="fa-solid fa-address-card"></i> Contact</h3>
@@ -1625,8 +1593,8 @@
             </p>
 
             <div class="video-grid fade-in-up">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/89hLNFWY36I?si=SB5Pq8qEEp4YKxL0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="video-wrapper latest-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/89hLNFWY36I?si=6ka3eqWvFvFp8eCV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/gjH6wnZIplE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1811,6 +1779,34 @@
                     menuIcon.classList.replace('fa-xmark', 'fa-bars');
                 }
             });
+        });
+
+        // PSYCHOMETRIC TAGS EXPLANATION BOX LOGIC
+        const psychometricTags = document.querySelectorAll('.psychometric-tags span');
+        const explBox = document.getElementById('tag-explanation-box');
+        const defaultExpl = ""; // Now empty by default
+
+        psychometricTags.forEach(tag => {
+            const showTooltip = () => {
+                explBox.textContent = tag.getAttribute('data-tooltip');
+                explBox.classList.add('active');
+                psychometricTags.forEach(t => t.classList.remove('active-tag'));
+                tag.classList.add('active-tag');
+            };
+            
+            const hideTooltip = () => {
+                explBox.textContent = defaultExpl;
+                explBox.classList.remove('active');
+                tag.classList.remove('active-tag');
+            };
+
+            // Desktop Hover
+            tag.addEventListener('mouseenter', showTooltip);
+            tag.addEventListener('mouseleave', hideTooltip);
+            
+            // Mobile Tap
+            tag.addEventListener('focus', showTooltip);
+            tag.addEventListener('blur', hideTooltip);
         });
 
         // PROFILE PHOTO CLICK LOGIC (FOR MOBILE)
