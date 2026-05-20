@@ -1249,7 +1249,29 @@
         }
 
         @media print {
-            .main-header, #portfolio-section, #productions, .video-grid, .site-footer, .interaction-indicator, .speech-bubble, .scroll-progress-container, .quote-container, .photo-break-container, #hire-me-section, .cursor-dot, .cursor-ring { display: none !important; }
+            /* Hide unwanted elements */
+            .main-header,
+            .quote-container,
+            #portfolio-section,
+            #video-productions-section,
+            #hire-me-section,
+            .site-footer,
+            .interaction-indicator,
+            .speech-bubble,
+            .scroll-progress-container,
+            .photo-break-container,
+            .cursor-dot,
+            .cursor-ring,
+            #toggleJobsBtn,
+            #toggleEduBtn {
+                display: none !important;
+            }
+
+            /* Expand the experience and education blocks */
+            #older-jobs, #older-edu { 
+                display: block !important; 
+            }
+
             html { scroll-padding-top: 0; }
             
             body { 
@@ -1260,7 +1282,7 @@
             }
             
             .sidebar { border-right-color: #000000 !important; }
-            h1, h2, h3, a, .job-title { color: #000000 !important; }
+            h1, h2, h3, a, .job-title, .role, .date { color: #000000 !important; }
             .fade-in-up { opacity: 1 !important; transform: none !important; transition: none !important; }
             .container { padding: 0 !important; gap: 2rem !important; max-width: 100% !important; }
             .job, .skills-section, .contact-info, .principle-card { page-break-inside: avoid; }
@@ -1278,13 +1300,17 @@
             }
             .section-block h2, .section-block p { color: #000000 !important; }
 
-            .profile-pic { box-shadow: none !important; }
+            /* Keep profile photo in color */
+            .profile-pic { 
+                filter: grayscale(0%) !important;
+                -webkit-filter: grayscale(0%) !important;
+                box-shadow: none !important; 
+                border-color: #000 !important;
+            }
+
             .principles-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
             .principle-card { box-shadow: none !important; border: 1px solid #000 !important; }
             
-            #older-jobs, #older-edu { display: block !important; }
-            #toggleJobsBtn, #toggleEduBtn { display: none !important; }
-
             a[href^="http"]::after {
                 content: " (" attr(href) ")";
                 font-size: 0.85rem;
@@ -1792,7 +1818,7 @@
             </div>
 
             <!-- CHUNK 3: VIDEO PRODUCTIONS (WHITE BLOCK) -->
-            <div class="section-block fade-in-up" style="margin-top: 4rem;">
+            <div id="video-productions-section" class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="productions" class="section-header">
                     <i class="fa-solid fa-film"></i> Video Productions
                 </h2>
