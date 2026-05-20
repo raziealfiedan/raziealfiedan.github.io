@@ -518,7 +518,6 @@
             transform-style: preserve-3d;
         }
 
-        /* Flip state controlled by JS */
         .wisdom-card.is-flipped {
             transform: rotateX(180deg);
         }
@@ -537,8 +536,6 @@
             border: 2px solid var(--text-main);
         }
 
-        /* Both sides will eventually show a quote, 
-           Face A is front, Face B is back. They look identical in layout. */
         .card-front {
             background-color: var(--secondary-bg);
             color: var(--text-main);
@@ -549,7 +546,7 @@
             background-color: var(--secondary-bg);
             color: var(--text-main);
             transform: rotateX(180deg);
-            box-shadow: -4px -4px 0 var(--accent-red); /* Flipped shadow */
+            box-shadow: -4px -4px 0 var(--accent-red);
         }
 
         .quote-text {
@@ -567,6 +564,41 @@
             letter-spacing: 0.05rem;
             color: var(--accent-red);
             font-weight: 800;
+        }
+
+        /* --- SECTION BLOCK CHUNKING (NEW) --- */
+        .section-block {
+            padding: 2.5rem 2rem;
+            margin-bottom: 4rem;
+            border: 2px solid var(--text-main);
+            box-shadow: 6px 6px 0 var(--accent-red);
+            transition: all 0.4s ease;
+            background-color: var(--bg-color); /* Default */
+        }
+        
+        .section-block.bg-grey {
+            background-color: var(--secondary-bg);
+        }
+        
+        /* The Dark Variant */
+        .section-block.bg-dark {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+        }
+        .section-block.bg-dark h2,
+        .section-block.bg-dark p {
+            color: var(--bg-color);
+        }
+        .section-block.bg-dark .section-header {
+            border-bottom-color: var(--bg-color);
+        }
+        .section-block.bg-dark .section-header i {
+            color: var(--bg-color);
+            opacity: 0.8;
+        }
+        .section-block.bg-dark .video-wrapper {
+            border-color: var(--bg-color);
+            background-color: transparent;
         }
 
         .main-content { min-width: 0; }
@@ -595,7 +627,7 @@
         .photo-break-container {
             width: 100%;
             height: 400px; 
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             border: 2px solid var(--text-main);
             box-shadow: 6px 6px 0 var(--accent-red);
             position: relative;
@@ -847,7 +879,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .video-wrapper {
@@ -875,7 +907,6 @@
             border: 0;
         }
 
-        /* LATEST BADGE FOR VIDEO */
         .latest-video::after {
             content: "LATEST";
             position: absolute;
@@ -893,26 +924,38 @@
             z-index: 2;
         }
 
+        /* --- UPDATED REFEREE CONTACT CARDS --- */
         .referee-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .referee {
+            background-color: var(--secondary-bg);
+            border: 2px solid var(--text-main); 
+            padding: 1.5rem;
+            box-shadow: 4px 4px 0 var(--text-main);
+            transition: all 0.3s ease;
+        }
+        .referee:hover {
+            box-shadow: 2px 2px 0 var(--accent-red);
+            border-color: var(--accent-red);
+            transform: translate(2px, 2px);
         }
 
         /* Brutalist Contact Form */
         .contact-form-container {
-            background-color: var(--secondary-bg);
-            border: 2px solid var(--text-main);
-            padding: 2.5rem;
             margin-top: 1rem;
-            box-shadow: 6px 6px 0 var(--accent-red);
             transition: all 0.4s ease;
         }
 
-        .contact-form-container:hover {
-            box-shadow: 4px 4px 0 var(--text-main);
-            transform: translate(2px, 2px);
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
@@ -1021,6 +1064,10 @@
                 gap: 1.5rem;
                 text-align: left; 
             }
+            
+            .section-block {
+                padding: 1.5rem 1rem;
+            }
 
             h1 { font-size: 2.2rem; }
             .section-header { font-size: 1.3rem; }
@@ -1112,6 +1159,7 @@
             box-shadow: 4px 4px 0 var(--text-main);
             transition: all 0.15s ease-out;
             border-radius: 0;
+            cursor: pointer;
         }
 
         .back-to-top:hover {
@@ -1179,9 +1227,24 @@
             .job, .skills-section, .contact-info, .principle-card { page-break-inside: avoid; }
             a { text-decoration: none !important; }
             
+            .section-block {
+                border: 1px solid #000000 !important;
+                box-shadow: none !important;
+                background-color: transparent !important;
+                color: #000000 !important;
+                padding: 1rem 0 !important;
+                margin-bottom: 2rem !important;
+                border-left: none !important;
+                border-right: none !important;
+            }
+            .section-block h2, .section-block p { color: #000000 !important; }
+
             .profile-pic { box-shadow: none !important; }
             .principles-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
             .principle-card { box-shadow: none !important; border: 1px solid #000 !important; }
+            
+            #older-jobs { display: block !important; }
+            #toggleJobsBtn { display: none !important; }
 
             a[href^="http"]::after {
                 content: " (" attr(href) ")";
@@ -1257,6 +1320,7 @@
             color: #b0b3b5;
             font-size: 1.5rem;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .close-coffee:hover {
@@ -1356,9 +1420,7 @@
                 <a href="#summary">Summary</a>
                 <a href="#principles">Principles</a>
                 <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#training">Training</a>
-                <a href="#community">Community</a>
+                <a href="#education">Education & More</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#productions">Productions</a>
                 <a href="#references">References</a>
@@ -1390,9 +1452,7 @@
 
             <div class="psychometric-tags fade-in-up">
                 <span tabindex="0" data-tooltip="MBTI: The Advocate. Highly intuitive, empathetic, and future-focused. Driven by a strong sense of integrity and quiet vision.">INFJ-T</span>
-                
                 <span tabindex="0" data-tooltip="Enneagram Tritype: Balances ambition and drive (3), loyalty and risk-assessment (6), with analytical observation (5).">Enneagram 3-6-5</span>
-                
                 <span tabindex="0" data-tooltip="CliftonStrengths: Naturally spots relevant patterns/issues, and possesses a strong inner drive to work hard and get things done.">Strategic & Achiever</span>
             </div>
             
@@ -1402,7 +1462,6 @@
                 <h3><i class="fa-solid fa-address-card"></i> Contact</h3>
                 <p style="margin-bottom: 1rem;"><i class="fa-solid fa-location-dot" style="color: var(--secondary-border); margin-top: 4px;"></i> Penampang, Sabah, Malaysia</p>
                 
-                <!-- Applied 'magnetic-btn' and 'span' wrappers for Social Links Parallax -->
                 <div class="contact-links">
                     <a href="mailto:razie.alfiedan@gmail.com" class="magnetic-btn"><span><i class="fa-solid fa-envelope"></i> razie.alfiedan@gmail.com</span></a>
                     <a href="tel:+60128218280" class="magnetic-btn"><span><i class="fa-solid fa-phone"></i> +60 12-821 8280</span></a>
@@ -1502,160 +1561,168 @@
                 </div>
             </div>
 
-            <h2 id="experience" class="section-header fade-in-up"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+            <!-- CHUNK 1: EXPERIENCE BLOCK -->
+            <div class="section-block bg-grey fade-in-up">
+                <h2 id="experience" class="section-header"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
 
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Sutera Sanctuary Lodges <span class="role">| Marketing & Communications Manager</span></div>
-                    <div class="date">Nov 2024 – Present</div>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Sutera Sanctuary Lodges <span class="role">| Marketing & Communications Manager</span></div>
+                        <div class="date">Nov 2024 – Present</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Spearheaded public relations and brand communication for the Sutera Sanctuary Lodges portfolios.</li>
+                        <li>Managed end-to-end digital marketing and social media ecosystems, driving engagement through optimized website content and dynamic video production.</li>
+                        <li>Led the conceptualization and graphic design of all property-level marketing collateral, encompassing promotional campaigns, menus, and environmental signage.</li>
+                        <li>Cultivated strategic partnerships by liaising with media and Key Opinion Leaders (KOLs) to coordinate high-impact familiarization (FAM) trips and property reviews.</li>
+                    </ul>
                 </div>
-                <ul class="job-details">
-                    <li>Spearheaded public relations and brand communication for the Sutera Sanctuary Lodges portfolios.</li>
-                    <li>Managed end-to-end digital marketing and social media ecosystems, driving engagement through optimized website content and dynamic video production.</li>
-                    <li>Led the conceptualization and graphic design of all property-level marketing collateral, encompassing promotional campaigns, menus, and environmental signage.</li>
-                    <li>Cultivated strategic partnerships by liaising with media and Key Opinion Leaders (KOLs) to coordinate high-impact familiarization (FAM) trips and property reviews.</li>
-                </ul>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Gleneagles Hospital Kota Kinabalu <span class="role">| Assistant Manager, Marketing</span></div>
+                        <div class="date">2023 – 2024</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Directed the marketing department in developing comprehensive annual strategies, budget planning, and resource allocation.</li>
+                        <li>Spearheaded high-impact healthcare campaigns (including "Strike Out Stroke", Children’s Day, and regional CSR initiatives), significantly increasing community engagement and brand visibility.</li>
+                        <li>Produced targeted visual and written content across various medical specialties, directly contributing to the successful achievement of the hospital's monthly revenue forecasts.</li>
+                    </ul>
+                </div>
+
+                <div class="job" style="margin-bottom: 0;">
+                    <div class="job-header">
+                        <div class="company-title">K.K.I.P. Sdn. Bhd. <span class="role">| Digital Marketing & Graphic Executive</span></div>
+                        <div class="date">2021 – 2023</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Played a pivotal role in the V21 Residence property launch, executing digital marketing strategies that contributed to generating RM100 million in sales within six months.</li>
+                        <li>Managed the comprehensive digital marketing ecosystem, including website administration, SEO optimization, and social media channel growth.</li>
+                        <li>Led the end-to-end conceptualization, graphic design, and copywriting for all digital and print marketing collateral.</li>
+                    </ul>
+                </div>
+
+                <!-- Hidden Older Jobs -->
+                <div id="older-jobs" style="display: none; margin-top: 2.5rem;">
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">BT PRINT <span class="role">| Sales & Marketing Manager</span></div>
+                            <div class="date">2018 – 2020</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Drove B2B and B2C sales strategies, consistently meeting and exceeding monthly revenue targets.</li>
+                            <li>Conceptualized and executed successful promotional campaigns and digital marketing initiatives to expand market reach and client acquisition.</li>
+                        </ul>
+                    </div>
+
+                     <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Gleneagles Hospital Kota Kinabalu <span class="role">| Graphic Designer & Event Organizer</span></div>
+                            <div class="date">2016 – 2018</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Designed engaging marketing collateral and maintained strict visual brand consistency across all hospital communications.</li>
+                            <li>Coordinated large-scale corporate and public health events, seamlessly integrating in-house photography and videography services.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">MY-LANGUAGE <span class="role">| Videographer</span></div>
+                            <div class="date">2012</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Conducted international video shoots for an English language learning software.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Bandwidth Magazine <span class="role">| Graphic Designer</span></div>
+                            <div class="date">2012 – 2015</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Executed editorial design, creating dynamic magazine layouts, articles, and promotional collateral.</li>
+                            <li>Actively participated in field event coverage and conducted interviews to support editorial content.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button id="toggleJobsBtn" class="back-to-top" style="width: 100%; justify-content: center; margin-top: 2rem;">
+                    <i class="fa-solid fa-plus"></i> View Full Career History
+                </button>
             </div>
 
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Gleneagles Hospital Kota Kinabalu <span class="role">| Assistant Manager, Marketing</span></div>
-                    <div class="date">2023 – 2024</div>
+            <!-- CHUNK 2: EDUCATION, TRAINING & COMMUNITY -->
+            <div class="section-block fade-in-up">
+                <h2 id="education" class="section-header"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Sabah Institute of Art <span class="role">| Diploma in Graphic Design</span></div>
+                        <div class="date">2010 – 2013</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Awarded Most Promising Student (2013).</li>
+                    </ul>
                 </div>
-                <ul class="job-details">
-                    <li>Directed the marketing department in developing comprehensive annual strategies, budget planning, and resource allocation.</li>
-                    <li>Spearheaded high-impact healthcare campaigns (including "Strike Out Stroke", Children’s Day, and regional CSR initiatives), significantly increasing community engagement and brand visibility.</li>
-                    <li>Produced targeted visual and written content across various medical specialties, directly contributing to the successful achievement of the hospital's monthly revenue forecasts.</li>
-                </ul>
-            </div>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Borneo T-shirt <span class="role">| T-Shirt Printing Course</span></div>
+                        <div class="date">2015</div>
+                    </div>
+                </div>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">SMK Datuk Peter Mojuntin <span class="role">| SPM (5As)</span></div>
+                        <div class="date">2005 – 2009</div>
+                    </div>
+                </div>
 
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">K.K.I.P. Sdn. Bhd. <span class="role">| Digital Marketing & Graphic Executive</span></div>
-                    <div class="date">2021 – 2023</div>
+                <h2 id="training" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-certificate"></i> Professional Training</h2>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Leadership Training <span class="role">| Learning Edge</span></div>
+                        <div class="date">2024</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Intensive certification focusing on strategic decision-making, mindset, and operational excellence. Strengthened ability to lead marketing initiatives while maintaining alignment with corporate identity and stakeholder expectations.</li>
+                    </ul>
                 </div>
-                <ul class="job-details">
-                    <li>Played a pivotal role in the V21 Residence property launch, executing digital marketing strategies that contributed to generating RM100 million in sales within six months.</li>
-                    <li>Managed the comprehensive digital marketing ecosystem, including website administration, SEO optimization, and social media channel growth.</li>
-                    <li>Led the end-to-end conceptualization, graphic design, and copywriting for all digital and print marketing collateral.</li>
-                </ul>
-            </div>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Leader's Track Training Program <span class="role">| Learning Edge</span></div>
+                        <div class="date">2026</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>A 2-day program brings leaders from SSL together to strengthen leadership mindset and behaviours, improve teamwork, and support service excellence across all teams.</li>
+                    </ul>
+                </div>
 
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">BT PRINT <span class="role">| Sales & Marketing Manager</span></div>
-                    <div class="date">2018 – 2020</div>
+                <h2 id="community" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-hand-holding-heart"></i> Additional Experience</h2>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-title">Community Engagement & Volunteer Work</div>
+                    </div>
+                    <ul class="job-details">
+                        <li><strong>Fundraising for Mountain Guides:</strong> Raised RM5,000 for Sabah earthquake-affected guides through dedicated art sales.</li>
+                        <li><strong>Sabah Heart Fund:</strong> Raised RM1,000 through commissioned portrait painting sales to provide critical healthcare aid.</li>
+                        <li><strong>Sabah Art Gallery:</strong> Active participant in the Weekly Art Workshops, engaging with the local creative community.</li>
+                    </ul>
                 </div>
-                <ul class="job-details">
-                    <li>Drove B2B and B2C sales strategies, consistently meeting and exceeding monthly revenue targets.</li>
-                    <li>Conceptualized and executed successful promotional campaigns and digital marketing initiatives to expand market reach and client acquisition.</li>
-                </ul>
-            </div>
-
-             <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Gleneagles Hospital Kota Kinabalu <span class="role">| Graphic Designer & Event Organizer</span></div>
-                    <div class="date">2016 – 2018</div>
-                </div>
-                <ul class="job-details">
-                    <li>Designed engaging marketing collateral and maintained strict visual brand consistency across all hospital communications.</li>
-                    <li>Coordinated large-scale corporate and public health events, seamlessly integrating in-house photography and videography services.</li>
-                </ul>
-            </div>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">MY-LANGUAGE <span class="role">| Videographer</span></div>
-                    <div class="date">2012</div>
-                </div>
-                <ul class="job-details">
-                    <li>Conducted international video shoots for an English language learning software.</li>
-                </ul>
-            </div>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Bandwidth Magazine <span class="role">| Graphic Designer</span></div>
-                    <div class="date">2012 – 2015</div>
-                </div>
-                <ul class="job-details">
-                    <li>Executed editorial design, creating dynamic magazine layouts, articles, and promotional collateral.</li>
-                    <li>Actively participated in field event coverage and conducted interviews to support editorial content.</li>
-                </ul>
-            </div>
-            
-            <h2 id="education" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-            
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Sabah Institute of Art <span class="role">| Diploma in Graphic Design</span></div>
-                    <div class="date">2010 – 2013</div>
-                </div>
-                <ul class="job-details">
-                    <li>Awarded Most Promising Student (2013).</li>
-                </ul>
-            </div>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Borneo T-shirt <span class="role">| T-Shirt Printing Course</span></div>
-                    <div class="date">2015</div>
+                <div class="job" style="margin-bottom: 0;">
+                    <div class="job-header">
+                        <div class="company-title">Entrepreneurial Ventures</div>
+                        <div class="date">2020 – 2021</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Adapted to the global pandemic by independently operating a small business selling fruits and juices to maintain financial stability.</li>
+                        <li>Sold commissioned portrait paintings and organized community fitness classes, showcasing adaptability and self-driven initiative.</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">SMK Datuk Peter Mojuntin <span class="role">| SPM (5As)</span></div>
-                    <div class="date">2005 – 2009</div>
-                </div>
-            </div>
-
-            <h2 id="training" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-certificate"></i> Professional Training</h2>
-            
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Leadership Training <span class="role">| Learning Edge</span></div>
-                    <div class="date">2024</div>
-                </div>
-                <ul class="job-details">
-                    <li>Intensive certification focusing on strategic decision-making, mindset, and operational excellence. Strengthened ability to lead marketing initiatives while maintaining alignment with corporate identity and stakeholder expectations.</li>
-                </ul>
-            </div>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Leader's Track Training Program <span class="role">| Learning Edge</span></div>
-                    <div class="date">2026</div>
-                </div>
-                <ul class="job-details">
-                    <li>A 2-day program brings leaders from SSL together to strengthen leadership mindset and behaviours, improve teamwork, and support service excellence across all teams.</li>
-                </ul>
-            </div>
-
-            <h2 id="community" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-hand-holding-heart"></i> Additional Experience</h2>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Community Engagement & Volunteer Work</div>
-                </div>
-                <ul class="job-details">
-                    <li><strong>Fundraising for Mountain Guides:</strong> Raised RM5,000 for Sabah earthquake-affected guides through dedicated art sales.</li>
-                    <li><strong>Sabah Heart Fund:</strong> Raised RM1,000 through commissioned portrait painting sales to provide critical healthcare aid.</li>
-                    <li><strong>Sabah Art Gallery:</strong> Active participant in the Weekly Art Workshops, engaging with the local creative community.</li>
-                </ul>
-            </div>
-
-            <div class="job fade-in-up">
-                <div class="job-header">
-                    <div class="company-title">Entrepreneurial Ventures</div>
-                    <div class="date">2020 – 2021</div>
-                </div>
-                <ul class="job-details">
-                    <li>Adapted to the global pandemic by independently operating a small business selling fruits and juices to maintain financial stability.</li>
-                    <li>Sold commissioned portrait paintings and organized community fitness classes, showcasing adaptability and self-driven initiative.</li>
-                </ul>
-            </div>
-
+            <!-- PORTFOLIO IS ALREADY HEAVY VISUALLY, LET IT FLOAT -->
             <div id="portfolio-section">
                 <h2 id="portfolio" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-palette"></i> Selected Works</h2>
 
@@ -1674,35 +1741,38 @@
                 </div>
             </div>
 
-            <h2 id="productions" class="section-header fade-in-up" style="margin-top: 4rem;">
-                <i class="fa-solid fa-film"></i> Video Productions
-            </h2>
-            
-            <p class="summary fade-in-up" style="margin-bottom: 2rem;">
-                A selection of video productions I was involved in. Click to play directly.
-            </p>
+            <!-- CHUNK 3: VIDEO PRODUCTIONS (DARK BLOCK) -->
+            <div class="section-block bg-dark fade-in-up" style="margin-top: 4rem;">
+                <h2 id="productions" class="section-header">
+                    <i class="fa-solid fa-film"></i> Video Productions
+                </h2>
+                
+                <p class="summary" style="margin-bottom: 2rem;">
+                    A selection of video productions I was involved in. Click to play directly.
+                </p>
 
-            <div class="video-grid fade-in-up">
-                <div class="video-wrapper latest-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/89hLNFWY36I?si=6ka3eqWvFvFp8eCV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/gjH6wnZIplE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/LE8iHmGSfeE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/uEEn_y4CJ28" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/5TQ_V1EDuR8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/p0XWTO16B4E?si=QhWog2ONMa7bd3M_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.instagram.com/reel/DJnw_vozlix/embed/" title="Instagram Reel" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                <div class="video-grid">
+                    <div class="video-wrapper latest-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/89hLNFWY36I?si=6ka3eqWvFvFp8eCV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/gjH6wnZIplE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/LE8iHmGSfeE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/uEEn_y4CJ28" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/5TQ_V1EDuR8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/p0XWTO16B4E?si=QhWog2ONMa7bd3M_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.instagram.com/reel/DJnw_vozlix/embed/" title="Instagram Reel" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
                 </div>
             </div>
             
@@ -1711,8 +1781,8 @@
             <div class="referee-grid fade-in-up">
                 <div class="referee">
                     <div class="company-title" style="margin-bottom: 0.2rem;">Jacqueline Chin</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Former Chief Operations Officer, Gleneagles Hospital Kota Kinabalu</div>
-                    <div class="contact-links" style="gap: 0.2rem;">
+                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Chief Operations Officer, Gleneagles Hospital Kota Kinabalu</div>
+                    <div class="contact-links" style="gap: 0.4rem;">
                         <a href="mailto:jaclyndsy@yahoo.com" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-envelope"></i> jaclyndsy@yahoo.com</span></a>
                         <a href="tel:+60128030353" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60128030353</span></a>
                     </div>
@@ -1720,30 +1790,31 @@
                 
                 <div class="referee">
                     <div class="company-title" style="margin-bottom: 0.2rem;">Nancy Chia</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
-                    <div class="contact-links">
+                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
+                    <div class="contact-links" style="gap: 0.4rem;">
                         <a href="tel:+60198526182" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60198526182</span></a>
                     </div>
                 </div>
                 <div class="referee">
                     <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Regional Director (East Malaysia), Syed Kechik Group</div>
-                    <div class="contact-links">
+                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Regional Director (East Malaysia), Syed Kechik Group</div>
+                    <div class="contact-links" style="gap: 0.4rem;">
                         <a href="tel:+60168881026" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60168881026</span></a>
                     </div>
                 </div>
             </div>
 
-            <div id="hire-me-section">
-                <h2 id="opportunities" class="section-header fade-in-up" style="margin-top: 4rem;">
+            <!-- CHUNK 4: HIRE ME (GREY BLOCK) -->
+            <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
+                <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
                 </h2>
                 
-                <p class="summary fade-in-up" style="margin-bottom: 2rem;">
+                <p class="summary" style="margin-bottom: 2rem;">
                     If your organization is looking for a driven, visually-minded communicator to elevate your brand, leave your details below and I will be in touch.
                 </p>
 
-                <div class="contact-form-container fade-in-up">
+                <div class="contact-form-container">
                     <form action="https://formspree.io/f/maqvgkbk" method="POST">
                         <div class="form-grid">
                             <div class="form-group">
@@ -1839,7 +1910,7 @@
             }, { duration: 500, fill: "forwards" });
         });
         
-        const hoverElements = document.querySelectorAll('a, button, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span');
+        const hoverElements = document.querySelectorAll('a, button, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span, .referee');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
@@ -1876,6 +1947,23 @@
                 }
             });
         });
+
+        // --- SHOW MORE JOBS LOGIC ---
+        const toggleJobsBtn = document.getElementById('toggleJobsBtn');
+        const olderJobs = document.getElementById('older-jobs');
+
+        if(toggleJobsBtn && olderJobs) {
+            toggleJobsBtn.addEventListener('click', () => {
+                if (olderJobs.style.display === 'none') {
+                    olderJobs.style.display = 'block';
+                    toggleJobsBtn.innerHTML = '<i class="fa-solid fa-minus"></i> Show Less';
+                } else {
+                    olderJobs.style.display = 'none';
+                    toggleJobsBtn.innerHTML = '<i class="fa-solid fa-plus"></i> View Full Career History';
+                    window.scrollBy({ top: -300, behavior: 'smooth' }); 
+                }
+            });
+        }
 
         // DARK MODE LOGIC
         const darkModeBtn = document.getElementById('darkModeToggle');
@@ -1977,6 +2065,8 @@
         const downloadPdfBtn = document.getElementById('downloadPdfBtn');
         if (downloadPdfBtn) {
             downloadPdfBtn.addEventListener('click', () => {
+                // Ensure older jobs are visible in the printout regardless of toggle state
+                if (olderJobs) olderJobs.style.display = 'block';
                 window.print();
             });
         }
@@ -2140,7 +2230,6 @@
         document.getElementById('quote-text-front').textContent = `"${initialQuote.text}"`;
         document.getElementById('quote-author-front').textContent = `— ${initialQuote.author}`;
 
-        // Add event listeners for clicking both the button and the card itself
         wisdomCardContainer.addEventListener('click', flipCardAndGenerate);
         newQuoteBtn.addEventListener('click', flipCardAndGenerate);
 
