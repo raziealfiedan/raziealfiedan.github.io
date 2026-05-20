@@ -1243,8 +1243,8 @@
             .principles-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
             .principle-card { box-shadow: none !important; border: 1px solid #000 !important; }
             
-            #older-jobs { display: block !important; }
-            #toggleJobsBtn { display: none !important; }
+            #older-jobs, #older-edu { display: block !important; }
+            #toggleJobsBtn, #toggleEduBtn { display: none !important; }
 
             a[href^="http"]::after {
                 content: " (" attr(href) ")";
@@ -1666,60 +1666,68 @@
                         <li>Awarded Most Promising Student (2013).</li>
                     </ul>
                 </div>
-                <div class="job">
-                    <div class="job-header">
-                        <div class="company-title">Borneo T-shirt <span class="role">| T-Shirt Printing Course</span></div>
-                        <div class="date">2015</div>
+
+                <!-- Hidden Older Education & Extra Sections -->
+                <div id="older-edu" style="display: none; margin-top: 2.5rem;">
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Borneo T-shirt <span class="role">| T-Shirt Printing Course</span></div>
+                            <div class="date">2015</div>
+                        </div>
                     </div>
-                </div>
-                <div class="job">
-                    <div class="job-header">
-                        <div class="company-title">SMK Datuk Peter Mojuntin <span class="role">| SPM (5As)</span></div>
-                        <div class="date">2005 – 2009</div>
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">SMK Datuk Peter Mojuntin <span class="role">| SPM (5As)</span></div>
+                            <div class="date">2005 – 2009</div>
+                        </div>
+                    </div>
+
+                    <h2 id="training" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-certificate"></i> Professional Training</h2>
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Leadership Training <span class="role">| Learning Edge</span></div>
+                            <div class="date">2024</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Intensive certification focusing on strategic decision-making, mindset, and operational excellence. Strengthened ability to lead marketing initiatives while maintaining alignment with corporate identity and stakeholder expectations.</li>
+                        </ul>
+                    </div>
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Leader's Track Training Program <span class="role">| Learning Edge</span></div>
+                            <div class="date">2026</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>A 2-day program brings leaders from SSL together to strengthen leadership mindset and behaviours, improve teamwork, and support service excellence across all teams.</li>
+                        </ul>
+                    </div>
+
+                    <h2 id="community" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-hand-holding-heart"></i> Additional Experience</h2>
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company-title">Community Engagement & Volunteer Work</div>
+                        </div>
+                        <ul class="job-details">
+                            <li><strong>Fundraising for Mountain Guides:</strong> Raised RM5,000 for Sabah earthquake-affected guides through dedicated art sales.</li>
+                            <li><strong>Sabah Heart Fund:</strong> Raised RM1,000 through commissioned portrait painting sales to provide critical healthcare aid.</li>
+                            <li><strong>Sabah Art Gallery:</strong> Active participant in the Weekly Art Workshops, engaging with the local creative community.</li>
+                        </ul>
+                    </div>
+                    <div class="job" style="margin-bottom: 0;">
+                        <div class="job-header">
+                            <div class="company-title">Entrepreneurial Ventures</div>
+                            <div class="date">2020 – 2021</div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Adapted to the global pandemic by independently operating a small business selling fruits and juices to maintain financial stability.</li>
+                            <li>Sold commissioned portrait paintings and organized community fitness classes, showcasing adaptability and self-driven initiative.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <h2 id="training" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-certificate"></i> Professional Training</h2>
-                <div class="job">
-                    <div class="job-header">
-                        <div class="company-title">Leadership Training <span class="role">| Learning Edge</span></div>
-                        <div class="date">2024</div>
-                    </div>
-                    <ul class="job-details">
-                        <li>Intensive certification focusing on strategic decision-making, mindset, and operational excellence. Strengthened ability to lead marketing initiatives while maintaining alignment with corporate identity and stakeholder expectations.</li>
-                    </ul>
-                </div>
-                <div class="job">
-                    <div class="job-header">
-                        <div class="company-title">Leader's Track Training Program <span class="role">| Learning Edge</span></div>
-                        <div class="date">2026</div>
-                    </div>
-                    <ul class="job-details">
-                        <li>A 2-day program brings leaders from SSL together to strengthen leadership mindset and behaviours, improve teamwork, and support service excellence across all teams.</li>
-                    </ul>
-                </div>
-
-                <h2 id="community" class="section-header" style="margin-top: 4rem;"><i class="fa-solid fa-hand-holding-heart"></i> Additional Experience</h2>
-                <div class="job">
-                    <div class="job-header">
-                        <div class="company-title">Community Engagement & Volunteer Work</div>
-                    </div>
-                    <ul class="job-details">
-                        <li><strong>Fundraising for Mountain Guides:</strong> Raised RM5,000 for Sabah earthquake-affected guides through dedicated art sales.</li>
-                        <li><strong>Sabah Heart Fund:</strong> Raised RM1,000 through commissioned portrait painting sales to provide critical healthcare aid.</li>
-                        <li><strong>Sabah Art Gallery:</strong> Active participant in the Weekly Art Workshops, engaging with the local creative community.</li>
-                    </ul>
-                </div>
-                <div class="job" style="margin-bottom: 0;">
-                    <div class="job-header">
-                        <div class="company-title">Entrepreneurial Ventures</div>
-                        <div class="date">2020 – 2021</div>
-                    </div>
-                    <ul class="job-details">
-                        <li>Adapted to the global pandemic by independently operating a small business selling fruits and juices to maintain financial stability.</li>
-                        <li>Sold commissioned portrait paintings and organized community fitness classes, showcasing adaptability and self-driven initiative.</li>
-                    </ul>
-                </div>
+                <button id="toggleEduBtn" class="back-to-top" style="width: 100%; justify-content: center; margin-top: 2rem;">
+                    <i class="fa-solid fa-plus"></i> View Training & Additional Experience
+                </button>
             </div>
 
             <!-- PORTFOLIO IS ALREADY HEAVY VISUALLY, LET IT FLOAT -->
@@ -1741,7 +1749,7 @@
                 </div>
             </div>
 
-            <!-- CHUNK 3: VIDEO PRODUCTIONS (DARK BLOCK) -->
+            <!-- CHUNK 3: VIDEO PRODUCTIONS (WHITE BLOCK) -->
             <div class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="productions" class="section-header">
                     <i class="fa-solid fa-film"></i> Video Productions
@@ -1776,35 +1784,41 @@
                 </div>
             </div>
             
-            <h2 id="references" class="section-header fade-in-up" style="margin-top: 2rem;"><i class="fa-solid fa-users"></i> References</h2>
-            
-            <div class="referee-grid fade-in-up">
-                <div class="referee">
-                    <div class="company-title" style="margin-bottom: 0.2rem;">Jacqueline Chin</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Chief Operations Officer, Gleneagles Hospital Kota Kinabalu</div>
-                    <div class="contact-links" style="gap: 0.4rem;">
-                        <a href="mailto:jaclyndsy@yahoo.com" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-envelope"></i> jaclyndsy@yahoo.com</span></a>
-                        <a href="tel:+60128030353" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60128030353</span></a>
-                    </div>
-                </div>
+            <!-- CHUNK 4: REFERENCES (WHITE BLOCK) -->
+            <div class="section-block fade-in-up" style="margin-top: 4rem;">
+                <h2 id="references" class="section-header" style="margin-top: 0;">
+                    <i class="fa-solid fa-users"></i> References
+                </h2>
                 
-                <div class="referee">
-                    <div class="company-title" style="margin-bottom: 0.2rem;">Nancy Chia</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
-                    <div class="contact-links" style="gap: 0.4rem;">
-                        <a href="tel:+60198526182" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60198526182</span></a>
+                <div class="referee-grid">
+                    <div class="referee">
+                        <div class="company-title" style="margin-bottom: 0.2rem;">Jacqueline Chin</div>
+                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Chief Operations Officer, Gleneagles Hospital Kota Kinabalu</div>
+                        <div class="contact-links" style="gap: 0.4rem;">
+                            <a href="mailto:jaclyndsy@yahoo.com" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-envelope"></i> jaclyndsy@yahoo.com</span></a>
+                            <a href="tel:+60128030353" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60128030353</span></a>
+                        </div>
                     </div>
-                </div>
-                <div class="referee">
-                    <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
-                    <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Regional Director (East Malaysia), Syed Kechik Group</div>
-                    <div class="contact-links" style="gap: 0.4rem;">
-                        <a href="tel:+60168881026" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60168881026</span></a>
+                    
+                    <div class="referee">
+                        <div class="company-title" style="margin-bottom: 0.2rem;">Nancy Chia</div>
+                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
+                        <div class="contact-links" style="gap: 0.4rem;">
+                            <a href="tel:+60198526182" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60198526182</span></a>
+                        </div>
+                    </div>
+                    
+                    <div class="referee">
+                        <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
+                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Regional Director (East Malaysia), Syed Kechik Group</div>
+                        <div class="contact-links" style="gap: 0.4rem;">
+                            <a href="tel:+60168881026" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60168881026</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CHUNK 4: HIRE ME (GREY BLOCK) -->
+            <!-- CHUNK 5: HIRE ME (GREY BLOCK) -->
             <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
                 <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
@@ -1965,6 +1979,23 @@
             });
         }
 
+        // --- SHOW MORE EDUCATION LOGIC ---
+        const toggleEduBtn = document.getElementById('toggleEduBtn');
+        const olderEdu = document.getElementById('older-edu');
+
+        if(toggleEduBtn && olderEdu) {
+            toggleEduBtn.addEventListener('click', () => {
+                if (olderEdu.style.display === 'none') {
+                    olderEdu.style.display = 'block';
+                    toggleEduBtn.innerHTML = '<i class="fa-solid fa-minus"></i> Show Less';
+                } else {
+                    olderEdu.style.display = 'none';
+                    toggleEduBtn.innerHTML = '<i class="fa-solid fa-plus"></i> View Training & Additional Experience';
+                    window.scrollBy({ top: -300, behavior: 'smooth' }); 
+                }
+            });
+        }
+
         // DARK MODE LOGIC
         const darkModeBtn = document.getElementById('darkModeToggle');
         const icon = darkModeBtn.querySelector('i');
@@ -2065,8 +2096,9 @@
         const downloadPdfBtn = document.getElementById('downloadPdfBtn');
         if (downloadPdfBtn) {
             downloadPdfBtn.addEventListener('click', () => {
-                // Ensure older jobs are visible in the printout regardless of toggle state
+                // Ensure hidden items are visible in the printout regardless of toggle state
                 if (olderJobs) olderJobs.style.display = 'block';
+                if (olderEdu) olderEdu.style.display = 'block';
                 window.print();
             });
         }
