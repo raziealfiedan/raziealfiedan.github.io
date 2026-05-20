@@ -147,8 +147,10 @@
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
+            position: relative; /* Ensures absolute centering works correctly */
         }
 
+        /* --- EXPANDING NAME LOGIC --- */
         .header-name {
             font-weight: 800;
             text-transform: uppercase;
@@ -158,10 +160,27 @@
             color: var(--text-main);
             z-index: 2001;
             transition: color 0.3s ease; 
+            cursor: pointer;
+            display: flex; 
+            align-items: center;
         }
 
         .header-name:hover {
             color: var(--accent-red);
+        }
+
+        .name-hidden {
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+        }
+
+        .header-name:hover .name-hidden,
+        .header-name:focus .name-hidden,
+        .header-name:active .name-hidden {
+            max-width: 150px; 
+            opacity: 1;
         }
 
         .header-controls {
@@ -175,6 +194,16 @@
             display: flex;
             gap: 1.5rem;
             align-items: center;
+        }
+
+        /* --- DESKTOP NAV ABSOLUTE CENTERING --- */
+        @media (min-width: 901px) {
+            .header-nav {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2000;
+            }
         }
 
         /* Nav Lighting up Effect */
@@ -566,14 +595,14 @@
             font-weight: 800;
         }
 
-        /* --- SECTION BLOCK CHUNKING (NEW) --- */
+        /* --- SECTION BLOCK CHUNKING --- */
         .section-block {
             padding: 2.5rem 2rem;
             margin-bottom: 4rem;
             border: 2px solid var(--text-main);
             box-shadow: 6px 6px 0 var(--accent-red);
             transition: all 0.4s ease;
-            background-color: var(--bg-color); /* Default */
+            background-color: var(--bg-color); 
         }
         
         .section-block.bg-grey {
@@ -662,6 +691,10 @@
             scroll-snap-align: start;
             filter: grayscale(0%);
             transition: filter 0.5s ease;
+        }
+
+        .photo-break-container:hover .photo-break-slide {
+            filter: grayscale(0%);
         }
 
         .photo-break-container .slider-btn {
@@ -875,11 +908,17 @@
         .thumb-prev-btn { left: 0; }
         .thumb-next-btn { right: 0; }
 
+        /* --- VIDEO GRID --- */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-bottom: 1rem;
+        }
+
+        /* --- FEATURED LATEST VIDEO LOGIC --- */
+        .latest-video {
+            grid-column: 1 / -1; /* Spans all available columns perfectly across mobile/desktop */
         }
 
         .video-wrapper {
@@ -1414,7 +1453,10 @@
 
     <header class="main-header">
         <div class="header-content">
-            <div class="header-name">Razie Alfiedan</div>
+            <!-- EXPANDING NAME -->
+            <div class="header-name" tabindex="0">
+                <span>R</span><span class="name-hidden">azie&nbsp;</span><span>A</span><span class="name-hidden">lfiedan</span>
+            </div>
             
             <nav class="header-nav" id="mainNav">
                 <a href="#summary">Summary</a>
