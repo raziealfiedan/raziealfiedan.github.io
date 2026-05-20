@@ -64,6 +64,52 @@
             background-size: 20px 20px;
         }
 
+        /* --- DYNAMIC CUSTOM CURSOR --- */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            a, button, input, textarea, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span { 
+                cursor: none !important; 
+            }
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-red);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: background-color 0.3s ease;
+        }
+
+        .cursor-ring {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--text-main);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cursor-ring.hovering {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(139, 0, 0, 0.1);
+            border-color: var(--accent-red);
+        }
+        body.dark-mode .cursor-ring.hovering {
+            background-color: rgba(229, 57, 53, 0.15);
+        }
+
         /* Scroll Progress Bar */
         .scroll-progress-container {
             position: fixed;
@@ -112,7 +158,6 @@
             color: var(--text-main);
             z-index: 2001;
             transition: color 0.3s ease; 
-            cursor: pointer;
         }
 
         .header-name:hover {
@@ -172,7 +217,6 @@
             width: 35px;
             height: 35px;
             border-radius: 5px;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -210,7 +254,6 @@
             width: 100%;
             max-width: 250px;
             margin-bottom: 2rem;
-            cursor: pointer;
         }
 
         /* Profile Pic */
@@ -306,7 +349,6 @@
             margin-bottom: 0.5rem;
             color: var(--text-main);
             transition: color 0.3s ease;
-            cursor: default;
         }
 
         h1:hover { color: var(--accent-red); }
@@ -358,19 +400,27 @@
             gap: 0.8rem;
         }
 
-        .contact-links a {
-            color: var(--text-main);
+        /* --- MAGNETIC SOCIAL LINKS --- */
+        .magnetic-btn {
+            display: inline-flex;
             text-decoration: none;
+            color: var(--text-main);
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
             position: relative;
+            /* Smooth snap-back when mouse leaves */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease; 
         }
 
-        .contact-links a::before {
+        .magnetic-btn span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            pointer-events: none; /* Let parent handle hover logic */
+            transition: transform 0.4s ease-out;
+        }
+
+        .magnetic-btn::before {
             content: '\f061';
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -380,9 +430,11 @@
             color: var(--accent-red);
             transition: all 0.3s ease;
             transform: translateX(-10px);
+            top: 50%;
+            margin-top: -8px; /* Center alignment */
         }
 
-        .contact-links a i {
+        .magnetic-btn i {
             font-size: 1.1rem;
             color: var(--secondary-border);
             transition: color 0.2s ease;
@@ -390,21 +442,20 @@
             text-align: center;
         }
 
-        .contact-links a:hover {
+        .magnetic-btn:hover {
             color: var(--accent-red); 
-            transform: translateX(20px);
         }
         
-        .contact-links a:hover i {
+        .magnetic-btn:hover i {
             color: var(--accent-red);
         }
 
-        .contact-links a:hover::before {
+        .magnetic-btn:hover::before {
             opacity: 1;
             transform: translateX(0);
         }
 
-        /* Psychometric Tags & Fixed Explanation Area (No Box) */
+        /* Psychometric Tags & Fixed Explanation Area */
         .psychometric-tags {
             display: flex;
             gap: 0.5rem;
@@ -422,7 +473,6 @@
             border: 1px solid var(--secondary-border);
             color: var(--text-platinum);
             transition: all 0.3s ease;
-            cursor: pointer; 
         }
 
         .psychometric-tags span:hover, .psychometric-tags span.active-tag {
@@ -437,48 +487,86 @@
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-main);
-            min-height: 80px; /* Reserves space so layout doesn't jump */
+            min-height: 80px; 
             margin-bottom: 2rem;
             text-align: left; 
             line-height: 1.4;
-            opacity: 0; /* Hidden by default */
+            opacity: 0; 
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
         .tag-explanation.active {
-            opacity: 1; /* Fades in the text */
+            opacity: 1; 
         }
 
         .contact-info, .skills-section, .quote-container { margin-bottom: 3rem; }
 
-        /* Quote Widget Styles */
-        .quote-box {
-            background-color: var(--secondary-bg);
-            border: 2px solid var(--text-main);
-            padding: 1.5rem;
-            margin-top: 0.5rem;
-            box-shadow: 4px 4px 0 var(--accent-red);
-            transition: all 0.4s ease;
+        /* --- GAMIFIED 3D WISDOM CARD WIDGET --- */
+        .wisdom-card-container {
+            width: 100%;
+            height: 140px;
+            perspective: 1000px;
+            margin-top: 0.8rem;
         }
 
-        #quote-text {
+        .wisdom-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transform-style: preserve-3d;
+        }
+
+        /* Flip state controlled by JS */
+        .wisdom-card.is-flipped {
+            transform: rotateX(180deg);
+        }
+
+        .card-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--text-main);
+        }
+
+        /* Both sides will eventually show a quote, 
+           Face A is front, Face B is back. They look identical in layout. */
+        .card-front {
+            background-color: var(--secondary-bg);
+            color: var(--text-main);
+            box-shadow: 4px 4px 0 var(--accent-red);
+        }
+
+        .card-back {
+            background-color: var(--secondary-bg);
+            color: var(--text-main);
+            transform: rotateX(180deg);
+            box-shadow: -4px -4px 0 var(--accent-red); /* Flipped shadow */
+        }
+
+        .quote-text {
             font-size: 0.95rem;
             font-weight: 600;
             line-height: 1.4;
             margin-bottom: 0.8rem;
             font-style: italic;
-            transition: opacity 0.3s ease;
         }
 
-        #quote-author {
+        .quote-author {
             display: block;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05rem;
             color: var(--accent-red);
             font-weight: 800;
-            transition: opacity 0.3s ease;
         }
 
         .main-content { min-width: 0; }
@@ -529,10 +617,10 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none; 
         }
         
-        .photo-break-track::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+        .photo-break-track::-webkit-scrollbar { display: none; }
 
         .photo-break-slide {
             flex: 0 0 100%;
@@ -542,10 +630,6 @@
             scroll-snap-align: start;
             filter: grayscale(0%);
             transition: filter 0.5s ease;
-        }
-
-        .photo-break-container:hover .photo-break-slide {
-            filter: grayscale(0%);
         }
 
         .photo-break-container .slider-btn {
@@ -691,7 +775,6 @@
             border: none;
             width: 45px;
             height: 45px;
-            cursor: pointer;
             z-index: 10;
             font-size: 1.2rem;
             display: flex;
@@ -727,7 +810,6 @@
             width: 80px;
             height: 80px;
             object-fit: cover;
-            cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.3s ease;
             opacity: 0.6;
@@ -749,7 +831,6 @@
             border: none;
             width: 25px;
             height: 40px;
-            cursor: pointer;
             z-index: 10;
             font-size: 0.9rem;
             display: flex;
@@ -948,7 +1029,6 @@
                 display: flex; 
             }
 
-            /* 5x2 GRID FOR MOBILE DROPDOWN NAV */
             .header-nav {
                 position: absolute;
                 top: 100%;
@@ -960,7 +1040,6 @@
                 padding: 1rem 0;
                 border-bottom: 2px solid var(--text-main);
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-20px);
@@ -1025,7 +1104,6 @@
             padding: 0.8rem 1.5rem;
             font-size: 0.9rem;
             font-weight: 700;
-            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.1rem;
             display: inline-flex;
@@ -1084,13 +1162,14 @@
         }
 
         @media print {
-            .main-header, #portfolio-section, #productions, .video-grid, .site-footer, .interaction-indicator, .speech-bubble, .scroll-progress-container, .quote-container, .photo-break-container, #hire-me-section { display: none !important; }
+            .main-header, #portfolio-section, #productions, .video-grid, .site-footer, .interaction-indicator, .speech-bubble, .scroll-progress-container, .quote-container, .photo-break-container, #hire-me-section, .cursor-dot, .cursor-ring { display: none !important; }
             html { scroll-padding-top: 0; }
             
             body { 
                 background-color: #ffffff !important; 
                 background-image: none !important; 
                 color: #000000 !important; 
+                cursor: auto !important;
             }
             
             .sidebar { border-right-color: #000000 !important; }
@@ -1177,7 +1256,6 @@
             border: none;
             color: #b0b3b5;
             font-size: 1.5rem;
-            cursor: pointer;
             transition: color 0.3s ease;
         }
 
@@ -1199,7 +1277,6 @@
             100% { opacity: 1; }
         }
 
-        /* CSS Coffee Cup Animation */
         .cup-container {
             position: relative;
             width: 100px;
@@ -1240,7 +1317,6 @@
             z-index: 1;
         }
 
-        /* Steaming Animation */
         .steam {
             position: absolute;
             bottom: 70px;
@@ -1263,6 +1339,10 @@
     </style>
 </head>
 <body>
+    
+    <!-- Custom Cursor DOM -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
 
     <div class="scroll-progress-container">
         <div class="scroll-progress-bar" id="progressBar"></div>
@@ -1316,20 +1396,21 @@
                 <span tabindex="0" data-tooltip="CliftonStrengths: Naturally spots relevant patterns/issues, and possesses a strong inner drive to work hard and get things done.">Strategic & Achiever</span>
             </div>
             
-            <!-- Completely invisible text area that fades in on interaction -->
             <div id="tag-explanation-box" class="tag-explanation fade-in-up"></div>
 
             <div class="contact-info">
                 <h3><i class="fa-solid fa-address-card"></i> Contact</h3>
                 <p style="margin-bottom: 1rem;"><i class="fa-solid fa-location-dot" style="color: var(--secondary-border); margin-top: 4px;"></i> Penampang, Sabah, Malaysia</p>
+                
+                <!-- Applied 'magnetic-btn' and 'span' wrappers for Social Links Parallax -->
                 <div class="contact-links">
-                    <a href="mailto:razie.alfiedan@gmail.com"><i class="fa-solid fa-envelope"></i> razie.alfiedan@gmail.com</a>
-                    <a href="tel:+60128218280"><i class="fa-solid fa-phone"></i> +60 12-821 8280</a>
-                    <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://www.instagram.com/raziealfiedan/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                    <a href="https://www.youtube.com/@nuaie" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                    <a href="https://www.facebook.com/razie.alfiedan/" target="_blank"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
-                    <a href="https://www.tiktok.com/@raziealfiedan" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+                    <a href="mailto:razie.alfiedan@gmail.com" class="magnetic-btn"><span><i class="fa-solid fa-envelope"></i> razie.alfiedan@gmail.com</span></a>
+                    <a href="tel:+60128218280" class="magnetic-btn"><span><i class="fa-solid fa-phone"></i> +60 12-821 8280</span></a>
+                    <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" class="magnetic-btn"><span><i class="fa-brands fa-linkedin"></i> LinkedIn</span></a>
+                    <a href="https://www.instagram.com/raziealfiedan/" target="_blank" class="magnetic-btn"><span><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                    <a href="https://www.youtube.com/@nuaie" target="_blank" class="magnetic-btn"><span><i class="fa-brands fa-youtube"></i> YouTube</span></a>
+                    <a href="https://www.facebook.com/razie.alfiedan/" target="_blank" class="magnetic-btn"><span><i class="fa-brands fa-square-facebook"></i> Facebook</span></a>
+                    <a href="https://www.tiktok.com/@raziealfiedan" target="_blank" class="magnetic-btn"><span><i class="fa-brands fa-tiktok"></i> TikTok</span></a>
                 </div>
             </div>
 
@@ -1358,14 +1439,23 @@
                 </ul>
             </div>
 
+            <!-- Gamified Wisdom Card Container -->
             <div class="quote-container fade-in-up">
-                <h3><i class="fa-solid fa-quote-left"></i> Favourite Quotes</h3>
-                <div class="quote-box">
-                    <p id="quote-text">"Trust in God, but tie your camel."</p>
-                    <span id="quote-author">— Prophet Muhammad</span>
+                <h3><i class="fa-solid fa-quote-left"></i> Moment of Wisdom</h3>
+                <div class="wisdom-card-container" id="wisdomCardContainer">
+                    <div class="wisdom-card" id="wisdomCard">
+                        <div class="card-face card-front">
+                            <p id="quote-text-front" class="quote-text">"Loading..."</p>
+                            <span id="quote-author-front" class="quote-author"></span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p id="quote-text-back" class="quote-text">"Loading..."</p>
+                            <span id="quote-author-back" class="quote-author"></span>
+                        </div>
+                    </div>
                 </div>
-                <button id="new-quote-btn" class="back-to-top" style="width: 100%; margin-top: 1rem; font-size: 0.7rem; padding: 0.5rem; justify-content: center;">
-                    <i class="fa-solid fa-rotate"></i> Refresh Wisdom
+                <button id="new-quote-btn" class="back-to-top" style="width: 100%; margin-top: 1.5rem; font-size: 0.7rem; padding: 0.5rem; justify-content: center;">
+                    <i class="fa-solid fa-rotate"></i> Flip New Card
                 </button>
             </div>
             
@@ -1622,9 +1712,9 @@
                 <div class="referee">
                     <div class="company-title" style="margin-bottom: 0.2rem;">Jacqueline Chin</div>
                     <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Former Chief Operations Officer, Gleneagles Hospital Kota Kinabalu</div>
-                    <div class="contact-links">
-                        <a href="mailto:jaclyndsy@yahoo.com" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-envelope"></i> jaclyndsy@yahoo.com</a>
-                        <a href="tel:+60128030353" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> +60128030353</a>
+                    <div class="contact-links" style="gap: 0.2rem;">
+                        <a href="mailto:jaclyndsy@yahoo.com" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-envelope"></i> jaclyndsy@yahoo.com</span></a>
+                        <a href="tel:+60128030353" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60128030353</span></a>
                     </div>
                 </div>
                 
@@ -1632,19 +1722,18 @@
                     <div class="company-title" style="margin-bottom: 0.2rem;">Nancy Chia</div>
                     <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
                     <div class="contact-links">
-                        <a href="tel:+60198526182" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> +60198526182</a>
+                        <a href="tel:+60198526182" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60198526182</span></a>
                     </div>
                 </div>
                 <div class="referee">
                     <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
                     <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: normal; font-style: normal;">Regional Director (East Malaysia), Syed Kechik Group</div>
                     <div class="contact-links">
-                        <a href="tel:+60198526182" style="font-weight: normal; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> +60168881026</a>
+                        <a href="tel:+60168881026" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60168881026</span></a>
                     </div>
                 </div>
             </div>
 
-            <!-- NEW ADDITION: Wrapped the entire form section in a div id="hire-me-section" to easily hide it when printing -->
             <div id="hire-me-section">
                 <h2 id="opportunities" class="section-header fade-in-up" style="margin-top: 4rem;">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
@@ -1731,6 +1820,63 @@
     </div>
 
     <script>
+        // --- CUSTOM CURSOR LOGIC ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorRing = document.querySelector('.cursor-ring');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Ring trails slightly behind
+            cursorRing.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+        
+        const hoverElements = document.querySelectorAll('a, button, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
+        });
+
+        // --- MAGNETIC SOCIAL LINKS LOGIC ---
+        const magneticButtons = document.querySelectorAll('.magnetic-btn');
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const hx = rect.width / 2;
+                const hy = rect.height / 2;
+                const x = e.clientX - rect.left - hx;
+                const y = e.clientY - rect.top - hy;
+                
+                btn.style.transition = 'none';
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.style.transition = 'none';
+                    span.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+                }
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                btn.style.transform = 'translate(0px, 0px)';
+                
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.style.transition = 'transform 0.5s ease-out';
+                    span.style.transform = 'translate(0px, 0px)';
+                }
+            });
+        });
+
         // DARK MODE LOGIC
         const darkModeBtn = document.getElementById('darkModeToggle');
         const icon = darkModeBtn.querySelector('i');
@@ -1771,7 +1917,6 @@
             }
         });
 
-        // Close mobile menu when a link is clicked
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 900) {
@@ -1781,10 +1926,10 @@
             });
         });
 
-        // PSYCHOMETRIC TAGS EXPLANATION BOX LOGIC
+        // PSYCHOMETRIC TAGS LOGIC
         const psychometricTags = document.querySelectorAll('.psychometric-tags span');
         const explBox = document.getElementById('tag-explanation-box');
-        const defaultExpl = ""; // Now empty by default
+        const defaultExpl = ""; 
 
         psychometricTags.forEach(tag => {
             const showTooltip = () => {
@@ -1800,22 +1945,19 @@
                 tag.classList.remove('active-tag');
             };
 
-            // Desktop Hover
             tag.addEventListener('mouseenter', showTooltip);
             tag.addEventListener('mouseleave', hideTooltip);
-            
-            // Mobile Tap
             tag.addEventListener('focus', showTooltip);
             tag.addEventListener('blur', hideTooltip);
         });
 
-        // PROFILE PHOTO CLICK LOGIC (FOR MOBILE)
+        // PROFILE PHOTO CLICK LOGIC 
         const profileWrapper = document.getElementById('profileWrapper');
         profileWrapper.addEventListener('click', () => {
             profileWrapper.classList.toggle('active');
         });
 
-        // SMOOTH SCROLL FOR HEADER LINKS
+        // SMOOTH SCROLL 
         document.querySelectorAll('.header-nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1824,7 +1966,7 @@
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70, // Offset to account for the sticky header height
+                        top: targetElement.offsetTop - 70, 
                         behavior: 'smooth'
                     });
                 }
@@ -1839,7 +1981,7 @@
             });
         }
 
-        // --- NEW: PHOTO BREAK AUTO-SLIDER LOGIC ---
+        // PHOTO BREAK AUTO-SLIDER LOGIC
         const breakTrack = document.getElementById('photoBreakTrack');
         const breakPrevBtn = document.getElementById('breakPrevBtn');
         const breakNextBtn = document.getElementById('breakNextBtn');
@@ -1850,13 +1992,12 @@
                 if (!breakTrack) return;
                 const maxScrollLeft = breakTrack.scrollWidth - breakTrack.clientWidth;
                 
-                // If reached the end, scroll back to start, else scroll to next slide
                 if (breakTrack.scrollLeft >= maxScrollLeft - 10) {
                     breakTrack.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     breakTrack.scrollBy({ left: breakTrack.clientWidth, behavior: 'smooth' });
                 }
-            }, 3000); // 3 seconds interval
+            }, 3000); 
         }
 
         function resetBreakAutoSlide() {
@@ -1867,7 +2008,6 @@
         if (breakTrack) {
             startBreakAutoSlide();
             
-            // Manual controls
             breakNextBtn.addEventListener('click', () => {
                 breakTrack.scrollBy({ left: breakTrack.clientWidth, behavior: 'smooth' });
                 resetBreakAutoSlide();
@@ -1877,7 +2017,6 @@
                 resetBreakAutoSlide();
             });
 
-            // Pause auto-slide when user interacts
             breakTrack.addEventListener('touchstart', () => clearInterval(breakInterval), {passive: true});
             breakTrack.addEventListener('touchend', startBreakAutoSlide);
             breakTrack.addEventListener('mouseenter', () => clearInterval(breakInterval));
@@ -1928,7 +2067,6 @@
             });
         });
 
-        // Arrow Nav
         document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
             const container = wrapper.querySelector('.slider-container');
             wrapper.querySelector('.next-btn').addEventListener('click', () => container.scrollBy({ left: container.clientWidth, behavior: 'smooth' }));
@@ -1955,7 +2093,7 @@
         // BACK TO TOP
         document.getElementById('backToTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // QUOTE GENERATOR LOGIC
+        // --- GAMIFIED QUOTE GENERATOR LOGIC ---
         const quotes = [
             { text: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
             { text: "You have power over your mind—not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
@@ -1963,67 +2101,50 @@
             { text: "What stands in the way becomes the way.", author: "Marcus Aurelius" },
             { text: "It is not death that a man should fear, but he should fear never beginning to live.", author: "Marcus Aurelius" },
             { text: "Our life is what our thoughts make it.", author: "Marcus Aurelius" },
-            { text: "To live a good life: We have the potential for it. If we can learn to be indifferent to what makes no difference.", author: "Marcus Aurelius" },
             { text: "We suffer more often in imagination than in reality.", author: "Seneca" },
-            { text: "It is not the man who has too little, but the man who craves more, that is poor.", author: "Seneca" },
             { text: "Life is long, if you know how to use it.", author: "Seneca" },
-            { text: "He who fears death will never do anything worthy of a man who is alive.", author: "Seneca" },
-            { text: "Ignorance is the cause of fear.", author: "Seneca" },
-            { text: "While we wait for life, life passes.", author: "Seneca" },
-            { text: "Only time can heal what reason cannot.", author: "Seneca" },
             { text: "It's not what happens to you, but how you react to it that matters.", author: "Epictetus" },
-            { text: "No man is free who is not master of himself.", author: "Epictetus" },
             { text: "First say to yourself what you would be; and then do what you have to do.", author: "Epictetus" },
-            { text: "If you want to improve, be content to be thought foolish and stupid.", author: "Epictetus" },
-            { text: "Wealth consists not in having great possessions, but in having few wants.", author: "Epictetus" },
-            { text: "He who laughs at himself never runs out of things to laugh at.", author: "Epictetus" },
             { text: "Don't explain your philosophy. Embody it.", author: "Epictetus" },
-            { text: "The strong man is not the good wrestler; the strong man is only the one who controls himself when he is angry.", author: "Prophet Muhammad" },
-            { text: "He who believes in God and the Last Day must either speak good or remain silent.", author: "Prophet Muhammad" },
-            { text: "The best among you are those who have the best manners and character.", author: "Prophet Muhammad" },
+            { text: "The strong man is only the one who controls himself when he is angry.", author: "Prophet Muhammad" },
             { text: "Actions are judged by intentions.", author: "Prophet Muhammad" },
-            { text: "Do not belittle any good deed, even meeting your brother with a cheerful face.", author: "Prophet Muhammad" },
-            { text: "Richness is not having many possessions, but richness is being content with oneself.", author: "Prophet Muhammad" },
-            { text: "Be in this world as if you were a stranger or a traveler.", author: "Prophet Muhammad" },
-            { text: "Look at those who are beneath you and do not look at those who are above you, for it is more suitable that you should not despise the blessings of God.", author: "Prophet Muhammad" },
-            { text: "What has reached you was never meant to miss you, and what has missed you was never meant to reach you.", author: "Prophet Muhammad" },
-            { text: "The most beloved of deeds to God are God's that are most consistent, even if they are small.", author: "Prophet Muhammad" },
-            { text: "None of you truly believes until he loves for his brother what he loves for himself.", author: "Prophet Muhammad" },
-            { text: "Make things easy for people and do not make them difficult, and cheer people up and do not drive them away.", author: "Prophet Muhammad" },
             { text: "Trust in God, but tie your camel.", author: "Prophet Muhammad" },
-            { text: "The honest and trustworthy merchant will be with the prophets, the truthful, and the martyrs.", author: "Prophet Muhammad" },
-            { text: "No one hoards except a sinner.", author: "Prophet Muhammad" },
-            { text: "May God show mercy to a man who is kind when he sells, when he buys, and when he recovers a debt.", author: "Prophet Muhammad" },
             { text: "Pay the laborer his wages before his sweat dries.", author: "Prophet Muhammad" },
-            { text: "No one has ever eaten better food than that which he has earned with his own hands.", author: "Prophet Muhammad" },
-            { text: "Charity does not decrease wealth.", author: "Prophet Muhammad" },
-            { text: "Delaying payment by a rich person is injustice.", author: "Prophet Muhammad" }
+            { text: "He who believes in God and the Last Day must either speak good or remain silent.", author: "Prophet Muhammad" }
         ];
 
-        function updateQuote() {
-            const quoteText = document.getElementById('quote-text');
-            const quoteAuthor = document.getElementById('quote-author');
-            const randomIndex = Math.floor(Math.random() * quotes.length);
+        const wisdomCardContainer = document.getElementById('wisdomCardContainer');
+        const wisdomCard = document.getElementById('wisdomCard');
+        const newQuoteBtn = document.getElementById('new-quote-btn');
+        let isFront = true;
+
+        function flipCardAndGenerate() {
+            const nextQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            wisdomCard.classList.toggle('is-flipped');
             
-            // Fade out
-            quoteText.style.opacity = 0;
-            quoteAuthor.style.opacity = 0;
-            
-            // Wait for fade out, then update and fade in
+            // Wait for the flip to halfway finish, then load the text onto the hidden face
             setTimeout(() => {
-                quoteText.textContent = `"${quotes[randomIndex].text}"`;
-                quoteAuthor.textContent = `— ${quotes[randomIndex].author}`;
-                quoteText.style.opacity = 1;
-                quoteAuthor.style.opacity = 1;
-            }, 300);
+                if (isFront) {
+                    document.getElementById('quote-text-back').textContent = `"${nextQuote.text}"`;
+                    document.getElementById('quote-author-back').textContent = `— ${nextQuote.author}`;
+                } else {
+                    document.getElementById('quote-text-front').textContent = `"${nextQuote.text}"`;
+                    document.getElementById('quote-author-front').textContent = `— ${nextQuote.author}`;
+                }
+                isFront = !isFront;
+            }, 0); 
         }
 
-        document.getElementById('new-quote-btn').addEventListener('click', updateQuote);
-        
-        // Initialize quote on load
-        window.addEventListener('DOMContentLoaded', updateQuote);
+        // Initialize the first quote immediately
+        const initialQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById('quote-text-front').textContent = `"${initialQuote.text}"`;
+        document.getElementById('quote-author-front').textContent = `— ${initialQuote.author}`;
 
-        // --- NEW: COFFEE BREAK EASTER EGG LOGIC ---
+        // Add event listeners for clicking both the button and the card itself
+        wisdomCardContainer.addEventListener('click', flipCardAndGenerate);
+        newQuoteBtn.addEventListener('click', flipCardAndGenerate);
+
+        // COFFEE BREAK EASTER EGG LOGIC
         const coffeeBtn = document.getElementById('coffeeBtn');
         const coffeeOverlay = document.getElementById('coffeeOverlay');
         const closeCoffeeBtn = document.getElementById('closeCoffeeBtn');
@@ -2032,11 +2153,10 @@
         if (coffeeBtn && coffeeOverlay && closeCoffeeBtn && lofiAudio) {
             coffeeBtn.addEventListener('click', () => {
                 coffeeOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Stop background scrolling
+                document.body.style.overflow = 'hidden'; 
                 lofiAudio.volume = 0; 
                 lofiAudio.play();
                 
-                // Smooth audio fade in
                 let fadeAudioIn = setInterval(() => {
                     if (lofiAudio.volume < 0.5) {
                         lofiAudio.volume += 0.05;
@@ -2048,9 +2168,8 @@
 
             closeCoffeeBtn.addEventListener('click', () => {
                 coffeeOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                document.body.style.overflow = 'auto'; 
                 
-                // Smooth audio fade out
                 let fadeAudioOut = setInterval(() => {
                     if (lofiAudio.volume > 0.05) {
                         lofiAudio.volume -= 0.05;
