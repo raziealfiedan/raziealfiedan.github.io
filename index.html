@@ -1218,6 +1218,17 @@
         .print-footer { display: none; }
 
         @media print {
+            /* Force variables to light mode to avoid dark theme bleed in print */
+            :root, body, body.dark-mode {
+                --bg-color: #ffffff !important;
+                --text-main: #000000 !important;
+                --secondary-bg: #ffffff !important; 
+                --secondary-border: #a9a9a9 !important;
+                --accent-red: #000000 !important; 
+                --text-platinum: #333333 !important;
+                --dot-color: transparent !important;
+            }
+
             .main-header,
             .desktop-notice,
             .quote-container,
@@ -1246,23 +1257,22 @@
             }
 
             .sidebar { border-right-color: #000000 !important; }
-            h1, h2, h3, a, .job-title, .role, .date { color: #000000 !important; }
+            h1, h2, h3, a, p, span, div, .job-title, .role, .date, .principle-text, .principle-title, .company-title { color: #000000 !important; }
             .fade-in-up { opacity: 1 !important; transform: none !important; transition: none !important; }
             .container { padding: 0 !important; gap: 2rem !important; max-width: 100% !important; }
-            .job, .skills-section, .contact-info, .principle-card { page-break-inside: avoid; }
+            .job, .skills-section, .contact-info, .principle-card, .referee { page-break-inside: avoid; }
             a { text-decoration: none !important; }
 
             .section-block {
                 border: 1px solid #000000 !important;
                 box-shadow: none !important;
-                background-color: transparent !important;
+                background-color: #ffffff !important;
                 color: #000000 !important;
                 padding: 1rem 0 !important;
                 margin-bottom: 2rem !important;
                 border-left: none !important;
                 border-right: none !important;
             }
-            .section-block h2, .section-block p { color: #000000 !important; }
 
             .profile-pic {
                 filter: grayscale(0%) !important;
@@ -1272,7 +1282,14 @@
             }
 
             .principles-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
-            .principle-card { box-shadow: none !important; border: 1px solid #000 !important; }
+            
+            /* Strict overrides for problem boxes */
+            .principle-card, .referee { 
+                box-shadow: none !important; 
+                border: 1px solid #000 !important; 
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
 
             a[href^="http"]::after {
                 content: " (" attr(href) ")";
@@ -1471,7 +1488,6 @@
         </div>
     </header>
 
-    <!-- MOBILE: Best viewed on desktop notice -->
     <div class="desktop-notice">
         <i class="fa-solid fa-desktop"></i> Best experienced on desktop
     </div>
@@ -1609,7 +1625,6 @@
                 </div>
             </div>
 
-            <!-- EXPERIENCE BLOCK -->
             <div class="section-block fade-in-up">
                 <h2 id="experience" class="section-header"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
 
@@ -1701,7 +1716,6 @@
                 </button>
             </div>
 
-            <!-- EDUCATION BLOCK -->
             <div class="section-block fade-in-up">
                 <h2 id="education" class="section-header"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
                 <div class="job">
@@ -1776,7 +1790,6 @@
                 </button>
             </div>
 
-            <!-- PORTFOLIO SECTION -->
             <div id="portfolio-section">
                 <h2 id="portfolio" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-palette"></i> Selected Works</h2>
 
@@ -1795,7 +1808,6 @@
                 </div>
             </div>
 
-            <!-- VIDEO PRODUCTIONS BLOCK -->
             <div id="video-productions-section" class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="productions" class="section-header">
                     <i class="fa-solid fa-film"></i> Video Productions
@@ -1828,7 +1840,6 @@
                 </div>
             </div>
 
-            <!-- REFERENCES BLOCK -->
             <div class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="references" class="section-header" style="margin-top: 0;">
                     <i class="fa-solid fa-users"></i> References
@@ -1866,7 +1877,6 @@
                 </div>
             </div>
 
-            <!-- HIRE ME BLOCK -->
             <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
                 <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
@@ -1924,7 +1934,6 @@
         </div>
     </footer>
 
-    <!-- PRINT FOOTER: shown only when printing/downloading -->
     <div class="print-footer">
         <h3>View My Full Interactive Portfolio</h3>
         <p>Scan the QR code or visit: <strong>https://raziealfiedan.github.io/</strong></p>
