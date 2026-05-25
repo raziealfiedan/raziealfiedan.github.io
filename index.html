@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2R81YQ452"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P2R81YQ452');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2R81YQ452"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P2R81YQ452');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Razie Alfiedan | Marketing, Communications & Visual Art</title>
     
+    <title>Razie Alfiedan | Marketing, Communications & Visual Art</title>
+    <meta name="description" content="Strategic Marketing & Communications Manager specializing in brand management, public relations, and visual art.">
+    <meta property="og:title" content="Razie Alfiedan | Marketing, Communications & Visual Art">
+    <meta property="og:description" content="Explore my interactive portfolio, video productions, and professional experience.">
+    <meta property="og:image" content="images/work-1.jpg"> <meta property="og:url" content="https://raziealfiedan.github.io/">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -24,7 +29,7 @@
             --secondary-bg: #E0E0E0;     /* 30% - Platinum for framing and subtle depth */
             --secondary-border: #A9A9A9; /* 30% - Dark Gray for softer lines */
             --accent-red: #8B0000;       /* 10% - Dark Red for highlights and action */
-            --text-platinum: #8A8D8F;    /* Adjusted metallic platinum for text readability */
+            --text-platinum: #555555;    /* Adjusted for better contrast in light mode */
             --dot-color: rgba(0, 0, 0, 0.1); /* Light dots */
         }
 
@@ -48,8 +53,6 @@
 
         html {
             scroll-padding-top: 80px; 
-            /* FIX 7: Removed scroll-behavior: smooth here — handled by JS scrollTo for nav,
-               and CSS scroll-snap for sliders. Avoids double-handling. */
         }
 
         body {
@@ -66,7 +69,6 @@
         }
 
         /* --- DYNAMIC CUSTOM CURSOR --- */
-        /* FIX 5: Added (hover: hover) to the pointer:fine check to better handle hybrid devices */
         @media (pointer: fine) and (hover: hover) {
             body { cursor: none; }
             a, button, input, textarea, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span { 
@@ -652,7 +654,7 @@
             transition: color 0.4s ease;
         }
 
-        .summary { font-size: 1.1rem; margin-bottom: 3rem; }
+        .summary { font-size: 1.1rem; margin-bottom: 1.5rem; } /* Adjusted bottom margin for chunking */
 
         .photo-break-container {
             width: 100%;
@@ -920,7 +922,6 @@
         /* --- FEATURED LATEST VIDEO LOGIC --- */
         .latest-video {
             grid-column: 1 / -1;
-            /* FIX 8: Added position: relative so the LATEST badge positions correctly */
             position: relative;
         }
 
@@ -993,7 +994,6 @@
             transition: all 0.4s ease;
         }
 
-        /* FIX 3: Form success/error feedback styles */
         .form-feedback {
             display: none;
             padding: 1rem;
@@ -1501,7 +1501,6 @@
 </head>
 <body>
     
-    <!-- Custom Cursor DOM -->
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
@@ -1511,7 +1510,6 @@
 
     <header class="main-header">
         <div class="header-content">
-            <!-- EXPANDING NAME -->
             <div class="header-name" tabindex="0">
                 <span>R</span><span class="name-hidden">azie&nbsp;</span><span>A</span><span class="name-hidden">lfiedan</span>
             </div>
@@ -1584,7 +1582,6 @@
                 </ul>
             </div>
 
-            <!-- MOVED INTERACTIVE ARSENAL SECTION -->
             <div class="skills-section fade-in-up" style="margin-bottom: 3rem;">
                 <h3 style="border-bottom: none; margin-bottom: 0.5rem;"><i class="fa-solid fa-rocket"></i> Digital Arsenal</h3>
                 <div class="psychometric-tags" style="margin-top: 0; margin-bottom: 0.5rem;">
@@ -1609,7 +1606,6 @@
                 </ul>
             </div>
 
-            <!-- Gamified Wisdom Card Container -->
             <div class="quote-container fade-in-up">
                 <h3><i class="fa-solid fa-quote-left"></i> Favourite Quotes</h3>
                 <div class="wisdom-card-container" id="wisdomCardContainer">
@@ -1635,17 +1631,20 @@
             
             <h2 id="summary" class="section-header fade-in-up"><i class="fa-solid fa-user-tie"></i>The Big Picture</h2>
             <p class="summary fade-in-up">
-                Strategic and visually-driven Marketing & Communications Manager with over 14 years of experience blending creative direction with data-backed marketing strategies. Proven expertise in leading comprehensive campaigns, brand management, performance marketing, and end-to-end content production across the hospitality, real estate, and healthcare sectors. An insightful leader who excels at translating complex brand narratives into engaging multimedia content and highly optimized advertising campaigns that drive revenue, elevate public profile, and build lasting client relationships.
+                Strategic and visually-driven Marketing & Communications Manager with over 14 years of experience blending creative direction with data-backed marketing strategies. Proven expertise in leading comprehensive campaigns, brand management, performance marketing, and end-to-end content production across the hospitality, real estate, and healthcare sectors.
+            </p>
+            <p class="summary fade-in-up" style="margin-top: -0.5rem; margin-bottom: 3rem;">
+                An insightful leader who excels at translating complex brand narratives into engaging multimedia content and highly optimized advertising campaigns that drive revenue, elevate public profile, and build lasting client relationships.
             </p>
 
             <div class="photo-break-container fade-in-up" id="photoBreakContainer">
                 <div class="photo-break-track" id="photoBreakTrack">
-                    <img src="images/work-1.jpg" alt="Razie Alfiedan Working 1" class="photo-break-slide">
-                    <img src="images/work-2.jpg" alt="Razie Alfiedan Working 2" class="photo-break-slide">
-                    <img src="images/work-3.jpg" alt="Razie Alfiedan Working 3" class="photo-break-slide">
-                    <img src="images/work-4.jpg" alt="Razie Alfiedan Working 4" class="photo-break-slide">
-                    <img src="images/work-5.jpg" alt="Razie Alfiedan Working 5" class="photo-break-slide">
-                    <img src="images/work-6.jpg" alt="Razie Alfiedan Working 6" class="photo-break-slide">
+                    <img src="images/work-1.jpg" alt="Razie Alfiedan Working 1" class="photo-break-slide" loading="lazy">
+                    <img src="images/work-2.jpg" alt="Razie Alfiedan Working 2" class="photo-break-slide" loading="lazy">
+                    <img src="images/work-3.jpg" alt="Razie Alfiedan Working 3" class="photo-break-slide" loading="lazy">
+                    <img src="images/work-4.jpg" alt="Razie Alfiedan Working 4" class="photo-break-slide" loading="lazy">
+                    <img src="images/work-5.jpg" alt="Razie Alfiedan Working 5" class="photo-break-slide" loading="lazy">
+                    <img src="images/work-6.jpg" alt="Razie Alfiedan Working 6" class="photo-break-slide" loading="lazy">
                 </div>
                 <button class="slider-btn prev-btn" id="breakPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="slider-btn next-btn" id="breakNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
@@ -1672,7 +1671,6 @@
                 </div>
             </div>
 
-            <!-- CHUNK 1: EXPERIENCE BLOCK -->
             <div class="section-block fade-in-up">
                 <h2 id="experience" class="section-header"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
 
@@ -1714,7 +1712,6 @@
                     </ul>
                 </div>
 
-                <!-- Hidden Older Jobs -->
                 <div id="older-jobs" style="display: none; margin-top: 2.5rem;">
                     
                     <div class="job">
@@ -1766,7 +1763,6 @@
                 </button>
             </div>
 
-            <!-- CHUNK 2: EDUCATION, TRAINING & COMMUNITY -->
             <div class="section-block fade-in-up">
                 <h2 id="education" class="section-header"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
                 <div class="job">
@@ -1779,7 +1775,6 @@
                     </ul>
                 </div>
 
-                <!-- Hidden Older Education & Extra Sections -->
                 <div id="older-edu" style="display: none; margin-top: 2.5rem;">
                     <div class="job">
                         <div class="job-header">
@@ -1842,7 +1837,6 @@
                 </button>
             </div>
 
-            <!-- PORTFOLIO IS ALREADY HEAVY VISUALLY, LET IT FLOAT -->
             <div id="portfolio-section">
                 <h2 id="portfolio" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-palette"></i> Selected Works</h2>
 
@@ -1861,7 +1855,6 @@
                 </div>
             </div>
 
-            <!-- CHUNK 3: VIDEO PRODUCTIONS (WHITE BLOCK) -->
             <div id="video-productions-section" class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="productions" class="section-header">
                     <i class="fa-solid fa-film"></i> Video Productions
@@ -1896,7 +1889,6 @@
                 </div>
             </div>
             
-            <!-- CHUNK 4: REFERENCES (WHITE BLOCK) -->
             <div class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="references" class="section-header" style="margin-top: 0;">
                     <i class="fa-solid fa-users"></i> References
@@ -1927,10 +1919,16 @@
                             <a href="tel:+60168881026" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60168881026</span></a>
                         </div>
                     </div>
+                    <div class="referee">
+                        <div class="company-title" style="margin-bottom: 0.2rem;">Elizabeth Jonathan</div>
+                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Assistant Human Resource Manager Sutera Sanctuary Lodges</div>
+                        <div class="contact-links" style="gap: 0.4rem;">
+                            <a href="tel:+601114070730" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +601114070730</span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- CHUNK 5: HIRE ME (GREY BLOCK) -->
             <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
                 <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
@@ -1940,7 +1938,6 @@
                     If your organization is looking for a driven, visually-minded communicator to elevate your brand, leave your details below and I will be in touch.
                 </p>
 
-                <!-- FIX 3: Replaced native form submission with JS fetch for inline feedback -->
                 <div class="contact-form-container">
                     <div id="formFields">
                         <div class="form-grid">
@@ -1982,8 +1979,8 @@
             <button class="back-to-top" id="backToTopBtn">
                 <i class="fa-solid fa-arrow-up"></i> Back To Top
             </button>
-            <button class="back-to-top" id="coffeeBtn" title="Take a break">
-                <i class="fa-solid fa-mug-hot"></i> Break
+            <button class="back-to-top" id="coffeeBtn" title="Take a break (Plays Audio)">
+                <i class="fa-solid fa-mug-hot"></i> Break 🎵
             </button>
         </div>
         <div class="footer-credit">
@@ -2265,8 +2262,9 @@
             breakTrack.addEventListener('mouseleave', startBreakAutoSlide);
         }
 
-        // FIX 2: IMAGE SLIDER & THUMBNAILS — break loop on first error to prevent sync drift
-        const maxImages = 50;
+        // FIX 2: IMAGE SLIDER & THUMBNAILS — Lazy loading applied
+        // NOTE: Set maxImages to the exact number of images you have to avoid unnecessary 404 requests.
+        const maxImages = 50; 
         const categories = ['portfolio'];
 
         categories.forEach(category => {
@@ -2280,14 +2278,16 @@
                 const img = document.createElement('img');
                 img.src = `images/${category}/${i}.jpg`;
                 img.alt = `Portfolio slide ${i}`;
+                img.loading = "lazy"; // Performance fix: Lazy loading
                 
                 const thumb = document.createElement('img');
                 thumb.src = `images/${category}/${i}.jpg`;
                 thumb.alt = `Thumbnail ${i}`;
+                thumb.loading = "lazy"; // Performance fix: Lazy loading
 
                 if (i === 1) thumb.classList.add('active');
 
-                // FIX 2: Track load success before appending thumbnail
+                // Track load success before appending thumbnail
                 img.onload = function() {
                     loadedCount++;
                 };
@@ -2436,6 +2436,20 @@
                         formFeedback.textContent = '✓ Message sent! I will be in touch soon.';
                         formFeedback.className = 'form-feedback success';
                         formFeedback.style.display = 'block';
+                        
+                        // Added timeout to clear success message and reset form
+                        setTimeout(() => {
+                            formFeedback.style.display = 'none';
+                            formFields.style.display = 'block';
+                            document.getElementById('name').value = '';
+                            document.getElementById('email').value = '';
+                            document.getElementById('company').value = '';
+                            document.getElementById('phone').value = '';
+                            document.getElementById('message').value = '';
+                            submitFormBtn.disabled = false;
+                            submitFormBtn.innerHTML = 'Send Inquiry <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i>';
+                        }, 7000);
+                        
                     } else {
                         throw new Error('Server error');
                     }
@@ -2445,6 +2459,11 @@
                     formFeedback.textContent = '✗ Something went wrong. Please try again or email directly.';
                     formFeedback.className = 'form-feedback error';
                     formFeedback.style.display = 'block';
+                    
+                    // Added timeout to clear error message
+                    setTimeout(() => {
+                        formFeedback.style.display = 'none';
+                    }, 7000);
                 }
             });
         }
