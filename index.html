@@ -16,7 +16,8 @@
     <meta name="description" content="Strategic Marketing & Communications Manager specializing in brand management, public relations, and visual art.">
     <meta property="og:title" content="Razie Alfiedan | Marketing, Communications & Visual Art">
     <meta property="og:description" content="Explore my interactive portfolio, video productions, and professional experience.">
-    <meta property="og:image" content="images/work-1.jpg"> <meta property="og:url" content="https://raziealfiedan.github.io/">
+    <meta property="og:image" content="images/work-1.jpg">
+    <meta property="og:url" content="https://raziealfiedan.github.io/">
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,27 +25,25 @@
     <style>
         /* CSS Variables mapping the 60-30-10 Rule */
         :root {
-            --bg-color: #ffffff;         /* The Canvas */
-            --text-main: #000000;        /* 60% - Dominant structural color */
-            --secondary-bg: #E0E0E0;     /* 30% - Platinum for framing and subtle depth */
-            --secondary-border: #A9A9A9; /* 30% - Dark Gray for softer lines */
-            --accent-red: #8B0000;       /* 10% - Dark Red for highlights and action */
-            --text-platinum: #555555;    /* Adjusted for better contrast in light mode */
-            --dot-color: rgba(0, 0, 0, 0.1); /* Light dots */
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --secondary-bg: #E0E0E0;
+            --secondary-border: #A9A9A9;
+            --accent-red: #8B0000;
+            --text-platinum: #555555;
+            --dot-color: rgba(0, 0, 0, 0.1);
         }
 
-        /* Dark Mode Override Variables */
         body.dark-mode {
-            --bg-color: #121212;         /* Deep dark background */
-            --text-main: #f0f0f0;        /* Off-white text for high contrast */
-            --secondary-bg: #222222;     /* Darker frames */
-            --secondary-border: #444444; /* Muted dark gray lines */
-            --accent-red: #e53935;       /* Brighter red to pop against the dark canvas */
-            --text-platinum: #b0b3b5;    /* Lighter gray for secondary text */
-            --dot-color: rgba(255, 255, 255, 0.05); /* Dark mode dots */
+            --bg-color: #121212;
+            --text-main: #f0f0f0;
+            --secondary-bg: #222222;
+            --secondary-border: #444444;
+            --accent-red: #e53935;
+            --text-platinum: #b0b3b5;
+            --dot-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Base Typography and Reset */
         * {
             margin: 0;
             padding: 0;
@@ -52,7 +51,7 @@
         }
 
         html {
-            scroll-padding-top: 80px; 
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -61,18 +60,35 @@
             color: var(--text-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.4s ease, color 0.4s ease; 
-            
-            /* Subtle Dots Effect */
+            transition: background-color 0.4s ease, color 0.4s ease;
             background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
             background-size: 20px 20px;
+        }
+
+        /* --- DESKTOP NOTICE BANNER --- */
+        .desktop-notice {
+            display: none;
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid var(--secondary-border);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            color: var(--text-platinum);
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-notice { display: block; }
         }
 
         /* --- DYNAMIC CUSTOM CURSOR --- */
         @media (pointer: fine) and (hover: hover) {
             body { cursor: none; }
-            a, button, input, textarea, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span { 
-                cursor: none !important; 
+            a, button, input, textarea, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span {
+                cursor: none !important;
             }
         }
 
@@ -114,10 +130,9 @@
             background-color: rgba(229, 57, 53, 0.15);
         }
 
-        /* Scroll Progress Bar */
         .scroll-progress-container {
             position: fixed;
-            bottom: 0; 
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 4px;
@@ -132,7 +147,6 @@
             transition: width 0.1s ease-out;
         }
 
-        /* Sticky Header Styles */
         .main-header {
             position: sticky;
             top: 0;
@@ -154,7 +168,6 @@
             position: relative;
         }
 
-        /* --- EXPANDING NAME LOGIC --- */
         .header-name {
             font-weight: 800;
             text-transform: uppercase;
@@ -163,9 +176,9 @@
             white-space: nowrap;
             color: var(--text-main);
             z-index: 2001;
-            transition: color 0.3s ease; 
+            transition: color 0.3s ease;
             cursor: pointer;
-            display: flex; 
+            display: flex;
             align-items: center;
         }
 
@@ -183,7 +196,7 @@
         .header-name:hover .name-hidden,
         .header-name:focus .name-hidden,
         .header-name:active .name-hidden {
-            max-width: 150px; 
+            max-width: 150px;
             opacity: 1;
         }
 
@@ -200,7 +213,6 @@
             align-items: center;
         }
 
-        /* --- DESKTOP NAV ABSOLUTE CENTERING --- */
         @media (min-width: 901px) {
             .header-nav {
                 position: absolute;
@@ -210,7 +222,6 @@
             }
         }
 
-        /* Nav Lighting up Effect */
         .header-nav a {
             text-decoration: none;
             color: var(--text-main);
@@ -265,7 +276,6 @@
             display: none;
         }
 
-        /* Grid Layout */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -276,7 +286,7 @@
         }
 
         .sidebar {
-            border-right: 2px solid var(--text-main); 
+            border-right: 2px solid var(--text-main);
             padding-right: 2rem;
             transition: border-color 0.4s ease;
         }
@@ -289,7 +299,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Profile Pic */
         .profile-pic {
             width: 100%;
             aspect-ratio: 2 / 3;
@@ -339,11 +348,10 @@
             width: 0;
         }
 
-        /* Interaction Indicator */
         .interaction-indicator {
             position: absolute;
-            bottom: -15px; 
-            left: 15px; 
+            bottom: -15px;
+            left: 15px;
             background-color: var(--accent-red);
             color: #ffffff;
             padding: 0.4rem 0.8rem;
@@ -354,7 +362,7 @@
             transition: opacity 0.3s ease;
             box-shadow: 4px 4px 0 var(--text-main);
             animation: bounce 2s infinite;
-            z-index: 5; 
+            z-index: 5;
             border: 2px solid var(--text-main);
         }
 
@@ -393,7 +401,7 @@
             letter-spacing: 0.1rem;
             margin-bottom: 3rem;
             display: block;
-            color: var(--secondary-border); 
+            color: var(--secondary-border);
             transition: color 0.4s ease;
         }
 
@@ -433,7 +441,6 @@
             gap: 0.8rem;
         }
 
-        /* --- MAGNETIC SOCIAL LINKS --- */
         .magnetic-btn {
             display: inline-flex;
             text-decoration: none;
@@ -441,7 +448,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             position: relative;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
         }
 
         .magnetic-btn span {
@@ -474,26 +481,16 @@
             text-align: center;
         }
 
-        .magnetic-btn:hover {
-            color: var(--accent-red); 
-        }
-        
-        .magnetic-btn:hover i {
-            color: var(--accent-red);
-        }
+        .magnetic-btn:hover { color: var(--accent-red); }
+        .magnetic-btn:hover i { color: var(--accent-red); }
+        .magnetic-btn:hover::before { opacity: 1; transform: translateX(0); }
 
-        .magnetic-btn:hover::before {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Psychometric Tags & Fixed Explanation Area */
         .psychometric-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-top: -2rem; 
-            margin-bottom: 0.5rem; 
+            margin-top: -2rem;
+            margin-bottom: 0.5rem;
         }
 
         .psychometric-tags span {
@@ -514,27 +511,23 @@
             box-shadow: 2px 2px 0 var(--text-main);
         }
 
-        /* Invisible text area that only shows when active */
         .tag-explanation {
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-main);
-            min-height: 80px; 
+            min-height: 80px;
             margin-bottom: 2rem;
-            text-align: left; 
+            text-align: left;
             line-height: 1.4;
-            opacity: 0; 
+            opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
-        .tag-explanation.active {
-            opacity: 1; 
-        }
+        .tag-explanation.active { opacity: 1; }
 
         .contact-info, .skills-section, .quote-container { margin-bottom: 3rem; }
 
-        /* --- GAMIFIED 3D WISDOM CARD WIDGET --- */
         .wisdom-card-container {
             width: 100%;
             height: 140px;
@@ -546,19 +539,17 @@
             width: 100%;
             height: 100%;
             position: relative;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
         }
 
-        .wisdom-card.is-flipped {
-            transform: rotateX(180deg);
-        }
+        .wisdom-card.is-flipped { transform: rotateX(180deg); }
 
         .card-face {
             width: 100%;
             height: 100%;
             position: absolute;
-            backface-visibility: hidden; 
+            backface-visibility: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -598,40 +589,26 @@
             font-weight: 800;
         }
 
-        /* --- SECTION BLOCK CHUNKING --- */
         .section-block {
             padding: 2.5rem 2rem;
             margin-bottom: 4rem;
             border: 2px solid var(--text-main);
             box-shadow: 6px 6px 0 var(--accent-red);
             transition: all 0.4s ease;
-            background-color: var(--bg-color); 
+            background-color: var(--bg-color);
         }
-        
-        .section-block.bg-grey {
-            background-color: var(--secondary-bg);
-        }
-        
-        /* The Dark Variant */
+
+        .section-block.bg-grey { background-color: var(--secondary-bg); }
+
         .section-block.bg-dark {
             background-color: var(--text-main);
             color: var(--bg-color);
         }
         .section-block.bg-dark h2,
-        .section-block.bg-dark p {
-            color: var(--bg-color);
-        }
-        .section-block.bg-dark .section-header {
-            border-bottom-color: var(--bg-color);
-        }
-        .section-block.bg-dark .section-header i {
-            color: var(--bg-color);
-            opacity: 0.8;
-        }
-        .section-block.bg-dark .video-wrapper {
-            border-color: var(--bg-color);
-            background-color: transparent;
-        }
+        .section-block.bg-dark p { color: var(--bg-color); }
+        .section-block.bg-dark .section-header { border-bottom-color: var(--bg-color); }
+        .section-block.bg-dark .section-header i { color: var(--bg-color); opacity: 0.8; }
+        .section-block.bg-dark .video-wrapper { border-color: var(--bg-color); background-color: transparent; }
 
         .main-content { min-width: 0; }
 
@@ -654,11 +631,11 @@
             transition: color 0.4s ease;
         }
 
-        .summary { font-size: 1.1rem; margin-bottom: 1.5rem; } /* Adjusted bottom margin for chunking */
+        .summary { font-size: 1.1rem; margin-bottom: 1.5rem; }
 
         .photo-break-container {
             width: 100%;
-            height: 400px; 
+            height: 400px;
             margin-bottom: 4rem;
             border: 2px solid var(--text-main);
             box-shadow: 6px 6px 0 var(--accent-red);
@@ -681,9 +658,9 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; 
+            scrollbar-width: none;
         }
-        
+
         .photo-break-track::-webkit-scrollbar { display: none; }
 
         .photo-break-slide {
@@ -696,9 +673,7 @@
             transition: filter 0.5s ease;
         }
 
-        .photo-break-container:hover .photo-break-slide {
-            filter: grayscale(0%);
-        }
+        .photo-break-container:hover .photo-break-slide { filter: grayscale(0%); }
 
         .photo-break-container .slider-btn {
             opacity: 0;
@@ -707,15 +682,9 @@
             transition: opacity 0.3s ease, background 0.2s ease;
         }
 
-        .photo-break-container:hover .slider-btn {
-            opacity: 1;
-        }
+        .photo-break-container:hover .slider-btn { opacity: 1; }
+        .photo-break-container .slider-btn:hover { background: var(--accent-red); }
 
-        .photo-break-container .slider-btn:hover {
-            background: var(--accent-red);
-        }
-
-        /* Principles Styles */
         .principles-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -774,7 +743,7 @@
         .role {
             font-style: italic;
             font-weight: 600;
-            color: var(--accent-red); 
+            color: var(--accent-red);
             transition: color 0.4s ease;
         }
 
@@ -782,29 +751,28 @@
             font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: var(--text-platinum); 
+            color: var(--text-platinum);
             transition: color 0.4s ease;
         }
 
-        ul.job-details { 
-            padding-left: 1.2rem; 
-            border-left: 2px solid var(--accent-red); 
+        ul.job-details {
+            padding-left: 1.2rem;
+            border-left: 2px solid var(--accent-red);
             transition: border-color 0.3s ease;
         }
-        
-        ul.job-details li { 
-            margin-bottom: 0.5rem; 
-            font-size: 1rem; 
+
+        ul.job-details li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
 
-        /* Image Slider */
         .slider-wrapper {
             position: relative;
             margin-bottom: 1rem;
-            border: 1px solid var(--secondary-border); 
-            background: var(--secondary-bg); 
+            border: 1px solid var(--secondary-border);
+            background: var(--secondary-bg);
             transition: border-color 0.3s ease, background-color 0.4s ease;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
         .slider-wrapper:hover { border-color: var(--text-main); }
@@ -815,24 +783,22 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; 
+            scrollbar-width: none;
         }
-        
+
         .slider-container::-webkit-scrollbar { display: none; }
 
         .slider-container img {
             width: 100%;
-            height: 800px; 
-            object-fit: contain; 
+            height: 800px;
+            object-fit: contain;
             flex-shrink: 0;
             scroll-snap-align: start;
             padding: 1rem;
-            transition: filter 0.4s ease, transform 0.6s ease-out; 
+            transition: filter 0.4s ease, transform 0.6s ease-out;
         }
 
-        .slider-container img:hover {
-            transform: scale(1.03);
-        }
+        .slider-container img:hover { transform: scale(1.03); }
 
         .slider-btn {
             position: absolute;
@@ -852,7 +818,6 @@
         }
 
         .slider-btn:hover { background: var(--accent-red); }
-
         .prev-btn { left: 0; }
         .next-btn { right: 0; }
 
@@ -911,7 +876,6 @@
         .thumb-prev-btn { left: 0; }
         .thumb-next-btn { right: 0; }
 
-        /* --- VIDEO GRID --- */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -919,7 +883,6 @@
             margin-bottom: 1rem;
         }
 
-        /* --- FEATURED LATEST VIDEO LOGIC --- */
         .latest-video {
             grid-column: 1 / -1;
             position: relative;
@@ -927,7 +890,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             width: 100%;
@@ -967,17 +930,16 @@
             z-index: 2;
         }
 
-        /* --- UPDATED REFEREE CONTACT CARDS --- */
         .referee-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         .referee {
             background-color: var(--bg-color);
-            border: 2px solid var(--text-main); 
+            border: 2px solid var(--text-main);
             padding: 1.5rem;
             box-shadow: 4px 4px 0 var(--text-main);
             transition: all 0.3s ease;
@@ -988,7 +950,6 @@
             transform: translate(2px, 2px);
         }
 
-        /* Brutalist Contact Form */
         .contact-form-container {
             margin-top: 1rem;
             transition: all 0.4s ease;
@@ -1030,9 +991,7 @@
             gap: 0.5rem;
         }
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
+        .form-group.full-width { grid-column: 1 / -1; }
 
         .form-group label {
             font-size: 0.85rem;
@@ -1042,7 +1001,7 @@
             color: var(--text-main);
         }
 
-        .form-group input, 
+        .form-group input,
         .form-group textarea {
             font-family: inherit;
             background-color: var(--bg-color);
@@ -1059,7 +1018,7 @@
             min-height: 120px;
         }
 
-        .form-group input:focus, 
+        .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-red);
@@ -1091,7 +1050,7 @@
             cursor: not-allowed;
         }
 
-        /* --- COMPREHENSIVE MOBILE LAYOUT FIX --- */
+        /* --- MOBILE LAYOUT --- */
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
@@ -1104,12 +1063,10 @@
                 border-bottom: 2px solid var(--text-main);
                 padding-right: 0;
                 padding-bottom: 2rem;
-                text-align: center; 
+                text-align: center;
             }
 
-            .psychometric-tags {
-                justify-content: center; 
-            }
+            .psychometric-tags { justify-content: center; }
 
             .tag-explanation {
                 text-align: center;
@@ -1117,35 +1074,27 @@
                 width: 100%;
             }
 
-            .contact-info, 
+            .contact-info,
             .skills-section,
-            .quote-container {
-                text-align: left;
-            }
+            .quote-container { text-align: left; }
 
-            .contact-links {
-                align-items: flex-start;
-            }
+            .contact-links { align-items: flex-start; }
 
-            .principles-grid, 
-            .video-grid, 
-            .referee-grid, 
+            .principles-grid,
+            .video-grid,
+            .referee-grid,
             .form-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-                text-align: left; 
+                text-align: left;
             }
-            
-            .section-block {
-                padding: 1.5rem 1rem;
-            }
+
+            .section-block { padding: 1.5rem 1rem; }
 
             h1 { font-size: 2.2rem; }
             .section-header { font-size: 1.3rem; }
 
-            .mobile-menu-btn {
-                display: flex; 
-            }
+            .mobile-menu-btn { display: flex; }
 
             .header-nav {
                 position: absolute;
@@ -1168,28 +1117,24 @@
             .header-nav.active {
                 opacity: 1;
                 visibility: visible;
-                transform: translateY(0); 
+                transform: translateY(0);
             }
 
             .header-nav a {
                 padding: 1rem;
                 width: 100%;
                 text-align: center;
-                font-size: 0.7rem; 
+                font-size: 0.7rem;
             }
 
-            .header-nav a::after {
-                display: none; 
-            }
+            .header-nav a::after { display: none; }
 
             .slider-container img {
                 height: 400px;
                 padding: 0;
             }
-            
-            .photo-break-container {
-                height: 250px;
-            }
+
+            .photo-break-container { height: 250px; }
         }
 
         .fade-in-up {
@@ -1205,7 +1150,7 @@
         }
 
         .site-footer {
-            background-color: var(--bg-color); 
+            background-color: var(--bg-color);
             color: var(--text-main);
             text-align: center;
             padding: 3rem 1rem;
@@ -1214,7 +1159,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Brutalist Buttons */
         .back-to-top {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -1241,16 +1185,15 @@
             box-shadow: 2px 2px 0 var(--text-main);
         }
 
-        /* Download Button Specifics */
         #downloadPdfBtn {
             background-color: var(--accent-red);
             color: #ffffff;
             animation: brutalistPulse 2.5s infinite;
         }
-        
+
         #downloadPdfBtn:hover {
-            animation: none; 
-            background-color: var(--text-main); 
+            animation: none;
+            background-color: var(--text-main);
             color: var(--bg-color);
         }
 
@@ -1260,12 +1203,8 @@
             100% { box-shadow: 4px 4px 0 var(--text-main); transform: translate(0px, 0px); }
         }
 
-        body.dark-mode .back-to-top {
-            box-shadow: 4px 4px 0 var(--text-main);
-        }
-        body.dark-mode .back-to-top:hover {
-            box-shadow: 2px 2px 0 var(--text-main);
-        }
+        body.dark-mode .back-to-top { box-shadow: 4px 4px 0 var(--text-main); }
+        body.dark-mode .back-to-top:hover { box-shadow: 2px 2px 0 var(--text-main); }
 
         .footer-credit {
             margin-top: 2rem;
@@ -1276,13 +1215,11 @@
         }
 
         /* --- PRINT OVERRIDE STYLES --- */
-        .print-footer {
-            display: none;
-        }
+        .print-footer { display: none; }
 
         @media print {
-            /* Hide unwanted elements */
             .main-header,
+            .desktop-notice,
             .quote-container,
             #portfolio-section,
             #video-productions-section,
@@ -1295,31 +1232,26 @@
             .cursor-dot,
             .cursor-ring,
             #toggleJobsBtn,
-            #toggleEduBtn {
-                display: none !important;
-            }
+            #toggleEduBtn { display: none !important; }
 
-            /* Expand the experience and education blocks */
-            #older-jobs, #older-edu { 
-                display: block !important; 
-            }
+            #older-jobs, #older-edu { display: block !important; }
 
             html { scroll-padding-top: 0; }
-            
-            body { 
-                background-color: #ffffff !important; 
-                background-image: none !important; 
-                color: #000000 !important; 
+
+            body {
+                background-color: #ffffff !important;
+                background-image: none !important;
+                color: #000000 !important;
                 cursor: auto !important;
             }
-            
+
             .sidebar { border-right-color: #000000 !important; }
             h1, h2, h3, a, .job-title, .role, .date { color: #000000 !important; }
             .fade-in-up { opacity: 1 !important; transform: none !important; transition: none !important; }
             .container { padding: 0 !important; gap: 2rem !important; max-width: 100% !important; }
             .job, .skills-section, .contact-info, .principle-card { page-break-inside: avoid; }
             a { text-decoration: none !important; }
-            
+
             .section-block {
                 border: 1px solid #000000 !important;
                 box-shadow: none !important;
@@ -1332,17 +1264,16 @@
             }
             .section-block h2, .section-block p { color: #000000 !important; }
 
-            /* Keep profile photo in color */
-            .profile-pic { 
+            .profile-pic {
                 filter: grayscale(0%) !important;
                 -webkit-filter: grayscale(0%) !important;
-                box-shadow: none !important; 
+                box-shadow: none !important;
                 border-color: #000 !important;
             }
 
             .principles-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
             .principle-card { box-shadow: none !important; border: 1px solid #000 !important; }
-            
+
             a[href^="http"]::after {
                 content: " (" attr(href) ")";
                 font-size: 0.85rem;
@@ -1371,6 +1302,12 @@
             .print-footer p {
                 font-size: 1rem;
                 margin-bottom: 1rem;
+            }
+            .print-footer .print-note {
+                font-size: 0.8rem;
+                opacity: 0.7;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
             }
             .print-footer img {
                 width: 120px;
@@ -1420,9 +1357,7 @@
             cursor: pointer;
         }
 
-        .close-coffee:hover {
-            color: var(--accent-red);
-        }
+        .close-coffee:hover { color: var(--accent-red); }
 
         .coffee-text {
             color: #ffffff;
@@ -1500,7 +1435,7 @@
     </style>
 </head>
 <body>
-    
+
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
@@ -1513,7 +1448,7 @@
             <div class="header-name" tabindex="0">
                 <span>R</span><span class="name-hidden">azie&nbsp;</span><span>A</span><span class="name-hidden">lfiedan</span>
             </div>
-            
+
             <nav class="header-nav" id="mainNav">
                 <a href="#summary">Summary</a>
                 <a href="#principles">Principles</a>
@@ -1536,8 +1471,13 @@
         </div>
     </header>
 
+    <!-- MOBILE: Best viewed on desktop notice -->
+    <div class="desktop-notice">
+        <i class="fa-solid fa-desktop"></i> Best experienced on desktop
+    </div>
+
     <div class="container">
-        
+
         <div class="sidebar fade-in-up">
             <div class="profile-wrapper" id="profileWrapper">
                 <div class="speech-bubble">Growth through challenges.</div>
@@ -1558,7 +1498,7 @@
             <div class="contact-info">
                 <h3><i class="fa-solid fa-address-card"></i> Contact</h3>
                 <p style="margin-bottom: 1rem;"><i class="fa-solid fa-location-dot" style="color: var(--secondary-border); margin-top: 4px;"></i> Penampang, Sabah, Malaysia</p>
-                
+
                 <div class="contact-links">
                     <a href="mailto:razie.alfiedan@gmail.com" class="magnetic-btn"><span><i class="fa-solid fa-envelope"></i> razie.alfiedan@gmail.com</span></a>
                     <a href="tel:+60128218280" class="magnetic-btn"><span><i class="fa-solid fa-phone"></i> +60 12-821 8280</span></a>
@@ -1624,11 +1564,11 @@
                     <i class="fa-solid fa-rotate"></i> Flip New Card
                 </button>
             </div>
-            
+
         </div>
 
         <div class="main-content">
-            
+
             <h2 id="summary" class="section-header fade-in-up"><i class="fa-solid fa-user-tie"></i>The Big Picture</h2>
             <p class="summary fade-in-up">
                 Strategic and visually-driven Marketing & Communications Manager with over 14 years of experience blending creative direction with data-backed marketing strategies. Proven expertise in leading comprehensive campaigns, brand management, performance marketing, and end-to-end content production across the hospitality, real estate, and healthcare sectors.
@@ -1657,13 +1597,11 @@
                     <div class="principle-title">Integrity First</div>
                     <div class="principle-text">Doing the right thing isn't just a preference, it's the baseline. I prioritize honesty, transparency, and ethical decision-making in every project.</div>
                 </div>
-                
                 <div class="principle-card">
                     <i class="fa-solid fa-clipboard-check principle-icon"></i>
                     <div class="principle-title">Absolute Professionalism</div>
                     <div class="principle-text">I believe in showing up prepared, communicating clearly, respecting timelines, and delivering work that speaks for itself.</div>
                 </div>
-                
                 <div class="principle-card">
                     <i class="fa-solid fa-anchor principle-icon"></i>
                     <div class="principle-title">Grace Under Pressure</div>
@@ -1671,6 +1609,7 @@
                 </div>
             </div>
 
+            <!-- EXPERIENCE BLOCK -->
             <div class="section-block fade-in-up">
                 <h2 id="experience" class="section-header"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
 
@@ -1713,7 +1652,6 @@
                 </div>
 
                 <div id="older-jobs" style="display: none; margin-top: 2.5rem;">
-                    
                     <div class="job">
                         <div class="job-header">
                             <div class="company-title">BT PRINT <span class="role">| Sales & Marketing Manager</span></div>
@@ -1725,7 +1663,7 @@
                         </ul>
                     </div>
 
-                     <div class="job">
+                    <div class="job">
                         <div class="job-header">
                             <div class="company-title">Gleneagles Hospital Kota Kinabalu <span class="role">| Graphic Designer & Event Organizer</span></div>
                             <div class="date">2016 – 2018</div>
@@ -1763,6 +1701,7 @@
                 </button>
             </div>
 
+            <!-- EDUCATION BLOCK -->
             <div class="section-block fade-in-up">
                 <h2 id="education" class="section-header"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
                 <div class="job">
@@ -1837,17 +1776,18 @@
                 </button>
             </div>
 
+            <!-- PORTFOLIO SECTION -->
             <div id="portfolio-section">
                 <h2 id="portfolio" class="section-header fade-in-up" style="margin-top: 4rem;"><i class="fa-solid fa-palette"></i> Selected Works</h2>
 
                 <h3 class="fade-in-up" style="margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; border-bottom: 1px solid var(--secondary-border); padding-bottom: 0.5rem;">Featured Projects & Campaigns</h3>
-                
+
                 <div class="slider-wrapper fade-in-up">
                     <button class="slider-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
                     <div class="slider-container" id="slider-portfolio"></div>
                     <button class="slider-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-                
+
                 <div class="thumbnail-wrapper fade-in-up">
                     <button class="thumb-btn thumb-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
                     <div class="thumbnail-strip" id="thumbnails-portfolio"></div>
@@ -1855,15 +1795,14 @@
                 </div>
             </div>
 
+            <!-- VIDEO PRODUCTIONS BLOCK -->
             <div id="video-productions-section" class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="productions" class="section-header">
                     <i class="fa-solid fa-film"></i> Video Productions
                 </h2>
-                
                 <p class="summary" style="margin-bottom: 2rem;">
                     A selection of end-to-end video productions I directed and executed. Click to play directly.
                 </p>
-
                 <div class="video-grid">
                     <div class="video-wrapper latest-video">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/89hLNFWY36I?si=6ka3eqWvFvFp8eCV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1888,12 +1827,12 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- REFERENCES BLOCK -->
             <div class="section-block fade-in-up" style="margin-top: 4rem;">
                 <h2 id="references" class="section-header" style="margin-top: 0;">
                     <i class="fa-solid fa-users"></i> References
                 </h2>
-                
                 <div class="referee-grid">
                     <div class="referee">
                         <div class="company-title" style="margin-bottom: 0.2rem;">Jacqueline Chin</div>
@@ -1903,7 +1842,6 @@
                             <a href="tel:+60128030353" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60128030353</span></a>
                         </div>
                     </div>
-                    
                     <div class="referee">
                         <div class="company-title" style="margin-bottom: 0.2rem;">Nancy Chia</div>
                         <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Former Group VP of Sales & Marketing, KKIP Sdn Bhd</div>
@@ -1911,7 +1849,6 @@
                             <a href="tel:+60198526182" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +60198526182</span></a>
                         </div>
                     </div>
-                    
                     <div class="referee">
                         <div class="company-title" style="margin-bottom: 0.2rem;">Arthur Lee</div>
                         <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Regional Director (East Malaysia), Syed Kechik Group</div>
@@ -1921,7 +1858,7 @@
                     </div>
                     <div class="referee">
                         <div class="company-title" style="margin-bottom: 0.2rem;">Elizabeth Jonathan</div>
-                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Assistant Human Resource Manager Sutera Sanctuary Lodges</div>
+                        <div class="role" style="display: block; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: normal; font-style: normal; opacity: 0.9;">Assistant Human Resource Manager, Sutera Sanctuary Lodges</div>
                         <div class="contact-links" style="gap: 0.4rem;">
                             <a href="tel:+601114070730" class="magnetic-btn" style="font-weight: normal; font-size: 0.85rem;"><span><i class="fa-solid fa-phone"></i> +601114070730</span></a>
                         </div>
@@ -1929,15 +1866,14 @@
                 </div>
             </div>
 
+            <!-- HIRE ME BLOCK -->
             <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
                 <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
                 </h2>
-                
                 <p class="summary" style="margin-bottom: 2rem;">
                     If your organization is looking for a driven, visually-minded communicator to elevate your brand, leave your details below and I will be in touch.
                 </p>
-
                 <div class="contact-form-container">
                     <div id="formFields">
                         <div class="form-grid">
@@ -1988,10 +1924,12 @@
         </div>
     </footer>
 
+    <!-- PRINT FOOTER: shown only when printing/downloading -->
     <div class="print-footer">
         <h3>View My Full Interactive Portfolio</h3>
         <p>Scan the QR code or visit: <strong>https://raziealfiedan.github.io/</strong></p>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://raziealfiedan.github.io/" alt="QR Code to Interactive Portfolio">
+        <p class="print-note">For the full interactive experience, visit the link above on a desktop browser.</p>
     </div>
 
     <div id="coffeeOverlay" class="coffee-overlay">
@@ -2019,20 +1957,15 @@
         // --- CUSTOM CURSOR LOGIC ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
-        
+
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-            
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
-            
-            cursorRing.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            cursorRing.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
-        
+
         const hoverElements = document.querySelectorAll('a, button, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span, .referee');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
@@ -2044,25 +1977,19 @@
         magneticButtons.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();
-                const hx = rect.width / 2;
-                const hy = rect.height / 2;
-                const x = e.clientX - rect.left - hx;
-                const y = e.clientY - rect.top - hy;
-                
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
                 btn.style.transition = 'none';
                 btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-                
                 const span = btn.querySelector('span');
                 if (span) {
                     span.style.transition = 'none';
                     span.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
                 }
             });
-
             btn.addEventListener('mouseleave', () => {
                 btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                 btn.style.transform = 'translate(0px, 0px)';
-                
                 const span = btn.querySelector('span');
                 if (span) {
                     span.style.transition = 'transform 0.5s ease-out';
@@ -2074,8 +2001,7 @@
         // --- SHOW MORE JOBS LOGIC ---
         const toggleJobsBtn = document.getElementById('toggleJobsBtn');
         const olderJobs = document.getElementById('older-jobs');
-
-        if(toggleJobsBtn && olderJobs) {
+        if (toggleJobsBtn && olderJobs) {
             toggleJobsBtn.addEventListener('click', () => {
                 if (olderJobs.style.display === 'none') {
                     olderJobs.style.display = 'block';
@@ -2083,7 +2009,7 @@
                 } else {
                     olderJobs.style.display = 'none';
                     toggleJobsBtn.innerHTML = '<i class="fa-solid fa-plus"></i> View Full Career History';
-                    window.scrollBy({ top: -300, behavior: 'smooth' }); 
+                    window.scrollBy({ top: -300, behavior: 'smooth' });
                 }
             });
         }
@@ -2091,8 +2017,7 @@
         // --- SHOW MORE EDUCATION LOGIC ---
         const toggleEduBtn = document.getElementById('toggleEduBtn');
         const olderEdu = document.getElementById('older-edu');
-
-        if(toggleEduBtn && olderEdu) {
+        if (toggleEduBtn && olderEdu) {
             toggleEduBtn.addEventListener('click', () => {
                 if (olderEdu.style.display === 'none') {
                     olderEdu.style.display = 'block';
@@ -2100,19 +2025,18 @@
                 } else {
                     olderEdu.style.display = 'none';
                     toggleEduBtn.innerHTML = '<i class="fa-solid fa-plus"></i> View Training & Additional Experience';
-                    window.scrollBy({ top: -300, behavior: 'smooth' }); 
+                    window.scrollBy({ top: -300, behavior: 'smooth' });
                 }
             });
         }
 
-        // FIX 6 (DARK MODE): Restore correct icon state on page load
+        // --- DARK MODE ---
         const darkModeBtn = document.getElementById('darkModeToggle');
         const icon = darkModeBtn.querySelector('i');
         const body = document.body;
 
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
-            // Restore sun icon if dark mode was previously saved
             icon.classList.replace('fa-moon', 'fa-sun');
         }
 
@@ -2124,15 +2048,14 @@
             localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
         });
 
-        // PROGRESS BAR LOGIC
+        // --- PROGRESS BAR ---
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
+            document.getElementById("progressBar").style.width = ((winScroll / height) * 100) + "%";
         });
 
-        // MOBILE MENU LOGIC
+        // --- MOBILE MENU ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
         const menuIcon = mobileMenuBtn.querySelector('i');
@@ -2155,18 +2078,13 @@
             });
         });
 
-        // PSYCHOMETRIC TAGS LOGIC
-        const tagContainers = document.querySelectorAll('.psychometric-tags');
-        
-        tagContainers.forEach(container => {
-            // Find the specific explanation box for this tag cluster
+        // --- PSYCHOMETRIC TAGS ---
+        document.querySelectorAll('.psychometric-tags').forEach(container => {
             let explBox = container.nextElementSibling;
             if (!explBox || !explBox.classList.contains('tag-explanation')) {
-                explBox = document.getElementById('tag-explanation-box'); // top fallback
+                explBox = document.getElementById('tag-explanation-box');
             }
-            
             const tags = container.querySelectorAll('span');
-            
             tags.forEach(tag => {
                 const showTooltip = () => {
                     explBox.textContent = tag.getAttribute('data-tooltip');
@@ -2174,13 +2092,11 @@
                     tags.forEach(t => t.classList.remove('active-tag'));
                     tag.classList.add('active-tag');
                 };
-                
                 const hideTooltip = () => {
                     explBox.textContent = "";
                     explBox.classList.remove('active');
                     tag.classList.remove('active-tag');
                 };
-
                 tag.addEventListener('mouseenter', showTooltip);
                 tag.addEventListener('mouseleave', hideTooltip);
                 tag.addEventListener('focus', showTooltip);
@@ -2188,39 +2104,30 @@
             });
         });
 
-        // PROFILE PHOTO CLICK LOGIC 
-        const profileWrapper = document.getElementById('profileWrapper');
-        profileWrapper.addEventListener('click', () => {
-            profileWrapper.classList.toggle('active');
+        // --- PROFILE PHOTO CLICK ---
+        document.getElementById('profileWrapper').addEventListener('click', () => {
+            document.getElementById('profileWrapper').classList.toggle('active');
         });
 
-        // FIX 7: SMOOTH SCROLL — single source of truth via JS scrollTo, not CSS scroll-behavior
+        // --- SMOOTH SCROLL ---
         document.querySelectorAll('.header-nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
+                const targetElement = document.querySelector(this.getAttribute('href'));
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetElement.offsetTop - 70, behavior: 'smooth' });
                 }
             });
         });
 
-        // DOWNLOAD PDF LOGIC
-        const downloadPdfBtn = document.getElementById('downloadPdfBtn');
-        if (downloadPdfBtn) {
-            downloadPdfBtn.addEventListener('click', () => {
-                if (olderJobs) olderJobs.style.display = 'block';
-                if (olderEdu) olderEdu.style.display = 'block';
-                window.print();
-            });
-        }
+        // --- DOWNLOAD PDF ---
+        document.getElementById('downloadPdfBtn')?.addEventListener('click', () => {
+            if (olderJobs) olderJobs.style.display = 'block';
+            if (olderEdu) olderEdu.style.display = 'block';
+            window.print();
+        });
 
-        // PHOTO BREAK AUTO-SLIDER LOGIC
+        // --- PHOTO BREAK AUTO-SLIDER ---
         const breakTrack = document.getElementById('photoBreakTrack');
         const breakPrevBtn = document.getElementById('breakPrevBtn');
         const breakNextBtn = document.getElementById('breakNextBtn');
@@ -2230,13 +2137,12 @@
             breakInterval = setInterval(() => {
                 if (!breakTrack) return;
                 const maxScrollLeft = breakTrack.scrollWidth - breakTrack.clientWidth;
-                
                 if (breakTrack.scrollLeft >= maxScrollLeft - 10) {
                     breakTrack.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     breakTrack.scrollBy({ left: breakTrack.clientWidth, behavior: 'smooth' });
                 }
-            }, 3000); 
+            }, 3000);
         }
 
         function resetBreakAutoSlide() {
@@ -2246,75 +2152,52 @@
 
         if (breakTrack) {
             startBreakAutoSlide();
-            
-            breakNextBtn.addEventListener('click', () => {
-                breakTrack.scrollBy({ left: breakTrack.clientWidth, behavior: 'smooth' });
-                resetBreakAutoSlide();
-            });
-            breakPrevBtn.addEventListener('click', () => {
-                breakTrack.scrollBy({ left: -breakTrack.clientWidth, behavior: 'smooth' });
-                resetBreakAutoSlide();
-            });
-
-            breakTrack.addEventListener('touchstart', () => clearInterval(breakInterval), {passive: true});
+            breakNextBtn.addEventListener('click', () => { breakTrack.scrollBy({ left: breakTrack.clientWidth, behavior: 'smooth' }); resetBreakAutoSlide(); });
+            breakPrevBtn.addEventListener('click', () => { breakTrack.scrollBy({ left: -breakTrack.clientWidth, behavior: 'smooth' }); resetBreakAutoSlide(); });
+            breakTrack.addEventListener('touchstart', () => clearInterval(breakInterval), { passive: true });
             breakTrack.addEventListener('touchend', startBreakAutoSlide);
             breakTrack.addEventListener('mouseenter', () => clearInterval(breakInterval));
             breakTrack.addEventListener('mouseleave', startBreakAutoSlide);
         }
 
-        // FIX 2: IMAGE SLIDER & THUMBNAILS — Lazy loading applied
-        // NOTE: Set maxImages to the exact number of images you have to avoid unnecessary 404 requests.
-        const maxImages = 50; 
-        const categories = ['portfolio'];
-
-        categories.forEach(category => {
+        // --- IMAGE SLIDER & THUMBNAILS ---
+        const maxImages = 50;
+        ['portfolio'].forEach(category => {
             const container = document.getElementById(`slider-${category}`);
             const thumbContainer = document.getElementById(`thumbnails-${category}`);
             if (!container) return;
-
-            let loadedCount = 0;
 
             for (let i = 1; i <= maxImages; i++) {
                 const img = document.createElement('img');
                 img.src = `images/${category}/${i}.jpg`;
                 img.alt = `Portfolio slide ${i}`;
-                img.loading = "lazy"; // Performance fix: Lazy loading
-                
+                img.loading = "lazy";
+
                 const thumb = document.createElement('img');
                 thumb.src = `images/${category}/${i}.jpg`;
                 thumb.alt = `Thumbnail ${i}`;
-                thumb.loading = "lazy"; // Performance fix: Lazy loading
-
+                thumb.loading = "lazy";
                 if (i === 1) thumb.classList.add('active');
 
-                // Track load success before appending thumbnail
-                img.onload = function() {
-                    loadedCount++;
-                };
-
-                img.onerror = function() {
-                    this.remove();
-                    thumb.remove();
-                };
+                img.onerror = function() { this.remove(); thumb.remove(); };
 
                 container.appendChild(img);
                 if (thumbContainer) {
                     thumbContainer.appendChild(thumb);
-                    thumb.onclick = () => {
-                        container.scrollTo({ left: img.offsetLeft, behavior: 'smooth' });
-                    };
+                    thumb.onclick = () => container.scrollTo({ left: img.offsetLeft, behavior: 'smooth' });
                 }
             }
 
             container.addEventListener('scroll', () => {
                 if (!thumbContainer) return;
-                let index = Math.round(container.scrollLeft / container.clientWidth);
-                const thumbs = thumbContainer.querySelectorAll('img');
-                thumbs.forEach((t, idx) => {
+                const index = Math.round(container.scrollLeft / container.clientWidth);
+                thumbContainer.querySelectorAll('img').forEach((t, idx) => {
                     if (idx === index) {
                         t.classList.add('active');
                         t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    } else { t.classList.remove('active'); }
+                    } else {
+                        t.classList.remove('active');
+                    }
                 });
             });
         });
@@ -2331,21 +2214,16 @@
             wrapper.querySelector('.thumb-prev-btn')?.addEventListener('click', () => strip.scrollBy({ left: -340, behavior: 'smooth' }));
         });
 
-        // SCROLL ANIMATIONS
+        // --- SCROLL ANIMATIONS ---
         const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in-up').forEach(el => scrollObserver.observe(el));
 
-        // BACK TO TOP
+        // --- BACK TO TOP ---
         document.getElementById('backToTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // FIX 1: GAMIFIED QUOTE GENERATOR — fixed timing so text loads at flip midpoint (400ms)
+        // --- QUOTE CARD ---
         const quotes = [
             { text: "Waste no more time arguing what a good man should be. Be one.", author: "Marcus Aurelius" },
             { text: "You have power over your mind—not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
@@ -2365,16 +2243,12 @@
             { text: "He who believes in God and the Last Day must either speak good or remain silent.", author: "Prophet Muhammad" }
         ];
 
-        const wisdomCardContainer = document.getElementById('wisdomCardContainer');
         const wisdomCard = document.getElementById('wisdomCard');
-        const newQuoteBtn = document.getElementById('new-quote-btn');
         let isFront = true;
 
         function flipCardAndGenerate() {
             const nextQuote = quotes[Math.floor(Math.random() * quotes.length)];
             wisdomCard.classList.toggle('is-flipped');
-            
-            // FIX 1: Wait 400ms (half the 0.8s flip duration) so text appears on the hidden face
             setTimeout(() => {
                 if (isFront) {
                     document.getElementById('quote-text-back').textContent = `"${nextQuote.text}"`;
@@ -2387,15 +2261,14 @@
             }, 400);
         }
 
-        // Initialize the first quote immediately
         const initialQuote = quotes[Math.floor(Math.random() * quotes.length)];
         document.getElementById('quote-text-front').textContent = `"${initialQuote.text}"`;
         document.getElementById('quote-author-front').textContent = `— ${initialQuote.author}`;
 
-        wisdomCardContainer.addEventListener('click', flipCardAndGenerate);
-        newQuoteBtn.addEventListener('click', flipCardAndGenerate);
+        document.getElementById('wisdomCardContainer').addEventListener('click', flipCardAndGenerate);
+        document.getElementById('new-quote-btn').addEventListener('click', flipCardAndGenerate);
 
-        // FIX 3: CONTACT FORM — JS fetch with inline success/error feedback (no page reload)
+        // --- CONTACT FORM ---
         const submitFormBtn = document.getElementById('submitFormBtn');
         const formFeedback = document.getElementById('formFeedback');
         const formFields = document.getElementById('formFields');
@@ -2417,11 +2290,11 @@
                 submitFormBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
                 const data = {
-                    name: name,
+                    name,
                     company: document.getElementById('company').value.trim(),
-                    email: email,
+                    email,
                     phone: document.getElementById('phone').value.trim(),
-                    message: message
+                    message
                 };
 
                 try {
@@ -2436,20 +2309,13 @@
                         formFeedback.textContent = '✓ Message sent! I will be in touch soon.';
                         formFeedback.className = 'form-feedback success';
                         formFeedback.style.display = 'block';
-                        
-                        // Added timeout to clear success message and reset form
                         setTimeout(() => {
                             formFeedback.style.display = 'none';
                             formFields.style.display = 'block';
-                            document.getElementById('name').value = '';
-                            document.getElementById('email').value = '';
-                            document.getElementById('company').value = '';
-                            document.getElementById('phone').value = '';
-                            document.getElementById('message').value = '';
+                            ['name', 'email', 'company', 'phone', 'message'].forEach(id => document.getElementById(id).value = '');
                             submitFormBtn.disabled = false;
                             submitFormBtn.innerHTML = 'Send Inquiry <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i>';
                         }, 7000);
-                        
                     } else {
                         throw new Error('Server error');
                     }
@@ -2459,16 +2325,12 @@
                     formFeedback.textContent = '✗ Something went wrong. Please try again or email directly.';
                     formFeedback.className = 'form-feedback error';
                     formFeedback.style.display = 'block';
-                    
-                    // Added timeout to clear error message
-                    setTimeout(() => {
-                        formFeedback.style.display = 'none';
-                    }, 7000);
+                    setTimeout(() => { formFeedback.style.display = 'none'; }, 7000);
                 }
             });
         }
 
-        // FIX 4: COFFEE BREAK — wrapped audio.play() in .catch() for browsers that block autoplay
+        // --- COFFEE BREAK ---
         const coffeeBtn = document.getElementById('coffeeBtn');
         const coffeeOverlay = document.getElementById('coffeeOverlay');
         const closeCoffeeBtn = document.getElementById('closeCoffeeBtn');
@@ -2479,34 +2341,22 @@
                 coffeeOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 lofiAudio.volume = 0;
-                // FIX 4: .catch() prevents unhandled promise rejection if browser blocks autoplay
                 lofiAudio.play().catch(() => {});
-                
-                let fadeAudioIn = setInterval(() => {
-                    if (lofiAudio.volume < 0.5) {
-                        lofiAudio.volume = Math.min(0.5, lofiAudio.volume + 0.05);
-                    } else {
-                        clearInterval(fadeAudioIn);
-                    }
+                let fadeIn = setInterval(() => {
+                    if (lofiAudio.volume < 0.5) { lofiAudio.volume = Math.min(0.5, lofiAudio.volume + 0.05); }
+                    else { clearInterval(fadeIn); }
                 }, 100);
             });
 
             closeCoffeeBtn.addEventListener('click', () => {
                 coffeeOverlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                
-                let fadeAudioOut = setInterval(() => {
-                    if (lofiAudio.volume > 0.05) {
-                        lofiAudio.volume = Math.max(0, lofiAudio.volume - 0.05);
-                    } else {
-                        clearInterval(fadeAudioOut);
-                        lofiAudio.pause();
-                        lofiAudio.currentTime = 0;
-                    }
+                let fadeOut = setInterval(() => {
+                    if (lofiAudio.volume > 0.05) { lofiAudio.volume = Math.max(0, lofiAudio.volume - 0.05); }
+                    else { clearInterval(fadeOut); lofiAudio.pause(); lofiAudio.currentTime = 0; }
                 }, 50);
             });
         }
-
     </script>
 </body>
 </html>
