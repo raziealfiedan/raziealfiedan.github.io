@@ -82,68 +82,6 @@
             .desktop-notice { display: block; }
         }
 
-        @media (pointer: fine) and (hover: hover) {
-            body { cursor: none; }
-            a, button, input, textarea, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span {
-                cursor: none !important;
-            }
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-red);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 99999;
-            transition: background-color 0.3s ease;
-        }
-
-        .cursor-ring {
-            width: 30px;
-            height: 30px;
-            border: 2px solid var(--text-main);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 99998;
-            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .cursor-ring.hovering {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(139, 0, 0, 0.1);
-            border-color: var(--accent-red);
-        }
-        body.dark-mode .cursor-ring.hovering {
-            background-color: rgba(229, 57, 53, 0.15);
-        }
-
-        .scroll-progress-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: transparent;
-            z-index: 9999;
-        }
-
-        .scroll-progress-bar {
-            height: 100%;
-            background: var(--accent-red);
-            width: 0%;
-            transition: width 0.1s ease-out;
-        }
-
         .main-header {
             position: sticky;
             top: 0;
@@ -263,6 +201,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .header-btn:hover {
@@ -500,6 +439,7 @@
             border: 1px solid var(--secondary-border);
             color: var(--text-platinum);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .psychometric-tags span:hover, .psychometric-tags span.active-tag {
@@ -531,6 +471,7 @@
             height: 140px;
             perspective: 1000px;
             margin-top: 0.8rem;
+            cursor: pointer;
         }
 
         .wisdom-card {
@@ -678,6 +619,7 @@
             background: rgba(0, 0, 0, 0.7);
             color: #fff;
             transition: opacity 0.3s ease, background 0.2s ease;
+            cursor: pointer;
         }
 
         .photo-break-container:hover .slider-btn { opacity: 1; }
@@ -813,6 +755,7 @@
             align-items: center;
             justify-content: center;
             transition: background 0.2s ease, color 0.4s ease;
+            cursor: pointer;
         }
 
         .slider-btn:hover { background: var(--accent-red); }
@@ -846,6 +789,7 @@
             opacity: 0.6;
             flex-shrink: 0;
             scroll-snap-align: start;
+            cursor: pointer;
         }
 
         .thumbnail-strip img.active, .thumbnail-strip img:hover {
@@ -868,6 +812,7 @@
             align-items: center;
             justify-content: center;
             transition: background 0.2s ease;
+            cursor: pointer;
         }
 
         .thumb-btn:hover { background: var(--accent-red); }
@@ -1235,10 +1180,7 @@
             .site-footer,
             .interaction-indicator,
             .speech-bubble,
-            .scroll-progress-container,
             .photo-break-container,
-            .cursor-dot,
-            .cursor-ring,
             #toggleJobsBtn,
             #toggleEduBtn { display: none !important; }
 
@@ -1445,7 +1387,6 @@
             100% { transform: translateY(-40px) scaleX(2); opacity: 0; }
         }
 
-        /* FIX: Audio blocked notice */
         .audio-notice {
             display: none;
             color: rgba(255,255,255,0.7);
@@ -1457,16 +1398,8 @@
 </head>
 <body>
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-
-    <div class="scroll-progress-container">
-        <div class="scroll-progress-bar" id="progressBar"></div>
-    </div>
-
     <header class="main-header">
         <div class="header-content">
-            <!-- FIX: Added touch toggle via JS class instead of pure CSS :hover -->
             <div class="header-name" id="headerName" tabindex="0">
                 <span>R</span><span class="name-hidden">azie&nbsp;</span><span>A</span><span class="name-hidden">lfiedan</span>
             </div>
@@ -1821,7 +1754,6 @@
                 </p>
                 <div class="video-grid">
                     <div class="video-wrapper latest-video">
-                        <!-- FIX: Added referrerpolicy consistently to all iframes -->
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/89hLNFWY36I?si=6ka3eqWvFvFp8eCV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="video-wrapper">
@@ -1898,7 +1830,6 @@
                 </div>
             </div>
 
-            <!-- FIX: Wrapped form fields in a proper <form> element for semantic HTML and accessibility -->
             <div id="hire-me-section" class="section-block bg-grey fade-in-up" style="margin-top: 4rem;">
                 <h2 id="opportunities" class="section-header" style="border-bottom-color: var(--text-main);">
                     <i class="fa-solid fa-briefcase"></i> Career Opportunities
@@ -1980,7 +1911,6 @@
                 </div>
             </div>
             <p class="coffee-text">Time for a screen break. Go grab a cup of coffee!<br><span style="font-size: 0.8rem; font-style: normal; opacity: 0.7;">Take a breath. Enjoy the lo-fi.</span></p>
-            <!-- FIX: Added audio blocked notice -->
             <p class="audio-notice" id="audioNotice">🔇 Audio blocked by browser. Click play in your browser settings to enable.</p>
             <audio id="lofiAudio" loop>
                 <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
@@ -1989,22 +1919,6 @@
     </div>
 
     <script>
-        // --- CUSTOM CURSOR ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
-
-        window.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = `${e.clientX}px`;
-            cursorDot.style.top = `${e.clientY}px`;
-            cursorRing.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
-        });
-
-        const hoverElements = document.querySelectorAll('a, button, .wisdom-card-container, .profile-wrapper, .slider-btn, .thumb-btn, .psychometric-tags span, .referee');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
-        });
-
         // --- MAGNETIC SOCIAL LINKS ---
         document.querySelectorAll('.magnetic-btn').forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
@@ -2069,13 +1983,6 @@
             icon.classList.toggle('fa-sun', isDark);
             icon.classList.toggle('fa-moon', !isDark);
             localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-        });
-
-        // --- PROGRESS BAR ---
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById('progressBar').style.width = ((winScroll / height) * 100) + '%';
         });
 
         // --- MOBILE MENU ---
